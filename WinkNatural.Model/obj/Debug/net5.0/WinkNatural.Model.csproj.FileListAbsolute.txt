@@ -1,0 +1,11 @@
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\bin\Debug\net5.0\WinkNatural.Model.deps.json
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\bin\Debug\net5.0\WinkNatural.Model.dll
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\bin\Debug\net5.0\ref\WinkNatural.Model.dll
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\bin\Debug\net5.0\WinkNatural.Model.pdb
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.AssemblyInfoInputs.cache
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.AssemblyInfo.cs
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.csproj.CoreCompileInputs.cache
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.dll
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\ref\WinkNatural.Model.dll
+D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Model\obj\Debug\net5.0\WinkNatural.Model.pdb

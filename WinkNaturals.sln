@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinkNaturals", "WinkNaturals\WinkNaturals.csproj", "{3DB96D9A-6D22-4884-B626-06ADEF0EC266}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinkNatural.Data", "WinkNatural.Data", "{99BEAB27-42B1-41EA-8EDB-157AB7E202E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinkNatural.Infrastructure", "WinkNatural.Infrastructure", "{82582AE1-D612-48B3-A488-A26963FD542F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinkNatural.Web", "WinkNatural.Web", "{497F6D8D-322C-4F7B-8FB8-D1D97DE5F858}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinkNatural.Common", "WinkNatural.Common\WinkNatural.Common.csproj", "{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinkNatural.Services", "WinkNatural.Services\WinkNatural.Services.csproj", "{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinkNatural.Model", "WinkNatural.Model\WinkNatural.Model.csproj", "{73DEEF0D-CB54-495A-8437-23697C95C84C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83C56961-FE9A-4C81-BE9B-10E484765868}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DB96D9A-6D22-4884-B626-06ADEF0EC266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB96D9A-6D22-4884-B626-06ADEF0EC266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB96D9A-6D22-4884-B626-06ADEF0EC266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB96D9A-6D22-4884-B626-06ADEF0EC266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73DEEF0D-CB54-495A-8437-23697C95C84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73DEEF0D-CB54-495A-8437-23697C95C84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73DEEF0D-CB54-495A-8437-23697C95C84C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73DEEF0D-CB54-495A-8437-23697C95C84C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DB96D9A-6D22-4884-B626-06ADEF0EC266} = {497F6D8D-322C-4F7B-8FB8-D1D97DE5F858}
+		{3E7369B8-9E6C-4A42-82D5-3F7C8CF2BC45} = {82582AE1-D612-48B3-A488-A26963FD542F}
+		{1B2F67AA-8E47-4478-9AFC-8E40AD898C3A} = {82582AE1-D612-48B3-A488-A26963FD542F}
+		{73DEEF0D-CB54-495A-8437-23697C95C84C} = {99BEAB27-42B1-41EA-8EDB-157AB7E202E3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ADC3FB0-3449-4E5D-9AFC-8D11D252D6E9}
+	EndGlobalSection
+EndGlobal
