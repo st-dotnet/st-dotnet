@@ -15,6 +15,7 @@ using WinkNaturals.Helpers;
 using ExigoResourceSet;
 using System.IO;
 using WinkNatural.Common.Extensions;
+using Microsoft.Extensions.FileProviders;
 
 namespace WinkNatural.Web.WinkNaturals
 {
@@ -102,7 +103,12 @@ namespace WinkNatural.Web.WinkNaturals
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Environment.WebRootPath, "assets/images")),
+                RequestPath = "/files"
+            });
             // global cors policy
             app.UseCors(x => x
                 .AllowAnyMethod()

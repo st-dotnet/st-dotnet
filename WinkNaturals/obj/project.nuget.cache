@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZX4veI3oUzcJWToM+sroZwHO4D8fIMsfkpK2X89lXUwAmblkDf5TmOzlOhRatlj9lwicsqjC0wnZFtZrJ8jrLA==",
+  "dgSpecHash": "zh1LTRsnRGiAuMKR7hAfAI5Iqdjvx0D6AvSoqubgRoLD2XXtSAoRgQhA3NQd99EoFHop/xVgeYMqw6ioYlKYAw==",
   "success": true,
-  "projectFilePath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNaturals\\WinkNaturals.csproj",
+  "projectFilePath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNaturals\\WinkNaturals.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SandeepRana\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\SandeepRana\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

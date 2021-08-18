@@ -7069,11 +7069,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNaturals\\WinkNaturals.csproj",
+      "projectUniqueName": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNaturals\\WinkNaturals.csproj",
       "projectName": "WinkNaturals",
-      "projectPath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNaturals\\WinkNaturals.csproj",
+      "projectPath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNaturals\\WinkNaturals.csproj",
       "packagesPath": "C:\\Users\\SandeepRana\\.nuget\\packages\\",
-      "outputPath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNaturals\\obj\\",
+      "outputPath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNaturals\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -7095,8 +7095,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNatural.Services\\WinkNatural.Services.csproj": {
-              "projectPath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNatural.Services\\WinkNatural.Services.csproj"
+            "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Services\\WinkNatural.Services.csproj": {
+              "projectPath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Services\\WinkNatural.Services.csproj"
             }
           }
         }

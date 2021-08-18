@@ -15,3 +15,20 @@ D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Services\obj\D
 D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.dll
 D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Services\obj\Debug\net5.0\ref\WinkNatural.Services.dll
 D:\Sandeep Projects\Wink-Naturals\winknatural\backend\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.pdb
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\WinkNatural.Services.deps.json
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\WinkNatural.Services.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\ref\WinkNatural.Services.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\WinkNatural.Services.pdb
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\Exigo.ResourceSet.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\WinkNatural.Common.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\WinkNatural.Common.pdb
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\bin\Debug\net5.0\es-US\WinkNatural.Common.resources.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.csproj.AssemblyReference.cache
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.AssemblyInfoInputs.cache
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.AssemblyInfo.cs
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.csproj.CoreCompileInputs.cache
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.csproj.CopyComplete
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\ref\WinkNatural.Services.dll
+D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Services\obj\Debug\net5.0\WinkNatural.Services.pdb

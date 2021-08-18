@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r3BjcBQz6SaT+Xgq4iPSf7zf2u5/qLLnXGurVy3ANS4xtMD/f0C3xFs9dNEgPhTNVAJnKXuEy38dl4hWo6sJfg==",
+  "dgSpecHash": "i8KaZMre/XsCiwAmyWCqPTCgIGxvcw0wwHq7xS8eanT6sSnqKjXHff/haajoNdL2UeysROVP1rjHwxrzgTAGhQ==",
   "success": true,
-  "projectFilePath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNatural.Model\\WinkNatural.Model.csproj",
+  "projectFilePath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Model\\WinkNatural.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SandeepRana\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\SandeepRana\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

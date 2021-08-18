@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BSzMLoNFWy/8L2H13BE3/HMH6yiEX7ICnVwm/yVWiYsDUeA5CCMxvcd4cepqjkzIRiKl+fo5rS7tT2CXOFQUnA==",
+  "dgSpecHash": "QpwNV5ERzIHPzwfh1tZ8a6a7g1qpjjIVTQrsbOEzL+3cwnOKCH89Uk9+70tM1TIyqAlCSwyZUK7vIBJV65KuEg==",
   "success": true,
-  "projectFilePath": "D:\\Sandeep Projects\\Wink-Naturals\\winknatural\\backend\\WinkNatural.Services\\WinkNatural.Services.csproj",
+  "projectFilePath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Services\\WinkNatural.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SandeepRana\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\SandeepRana\\.nuget\\packages\\exigo.api.client\\1.0.3\\exigo.api.client.1.0.3.nupkg.sha512",
