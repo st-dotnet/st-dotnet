@@ -12,6 +12,8 @@ namespace WinkNatural.Services.Interfaces
 
         //Get item category
         List<ItemCategoryResponse> GetItemCategory(int webCategoryID);
+
+        ShopProductsResponse GetProductDetailById(string[] itemCodes);
         byte[] GetProductImage(string imageName);
     }
 }

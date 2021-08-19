@@ -32,6 +32,14 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetShopProducts(CategoryID));
         }
 
+        [HttpGet("GetProductDetailById/{itemCode}")]///{itemCode:string}
+        public IActionResult GetProductDetailById(string itemCode)
+        {
+            string[] itemCodes = new string[1];
+            itemCodes[0] = itemCode;
+            return Ok(_shoppingService.GetProductDetailById(itemCodes));
+        }
+
         [HttpGet("ProductImage/{imageName}")]
         public IActionResult GetProductImage(string imageName)
         {

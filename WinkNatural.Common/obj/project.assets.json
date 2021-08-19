@@ -916,33 +916,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SandeepRana\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Common\\WinkNatural.Common.csproj",
+      "projectUniqueName": "D:\\Wink Naturals 18-08-2021\\st-dotnet\\WinkNatural.Common\\WinkNatural.Common.csproj",
       "projectName": "WinkNatural.Common",
-      "projectPath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Common\\WinkNatural.Common.csproj",
-      "packagesPath": "C:\\Users\\SandeepRana\\.nuget\\packages\\",
-      "outputPath": "D:\\Sandeep Projects\\Wink - 18-08-2021\\st-dotnet\\WinkNatural.Common\\obj\\",
+      "projectPath": "D:\\Wink Naturals 18-08-2021\\st-dotnet\\WinkNatural.Common\\WinkNatural.Common.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "D:\\Wink Naturals 18-08-2021\\st-dotnet\\WinkNatural.Common\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\SandeepRana\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.pkg.github.com/sagunchauhan01/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -984,7 +978,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

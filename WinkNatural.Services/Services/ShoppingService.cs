@@ -14,34 +14,13 @@ namespace WinkNatural.Services.Services
     public class ShoppingService : IShoppingService
     {
         public List<ItemCategoryResponse> GetItemCategory(int webCategoryID)
-        { 
-            webCategoryID = webCategoryID == 0 ? 1 : webCategoryID; 
+        {
+            webCategoryID = webCategoryID == 0 ? 1 : webCategoryID;
             var categories = new List<ItemCategoryResponse>();
 
             using (var context = Common.Utils.DbConnection.Sql())
             {
-                var data = context.Query<ItemCategoryResponse>(@"
-			        ;WITH webcat (WebCategoryID, WebCategoryDescription, ParentID, NestedLevel, SortOrder) 
-				         AS (SELECT WebCategoryID, 
-							        WebCategoryDescription, 
-							        ParentID = COALESCE(ParentID, 0), 
-							        NestedLevel,
-                                    SortOrder
-					         FROM   WebCategories 
-					         WHERE  WebCategoryID = @webcategoryid
-							        AND WebID = @webid 
-					         UNION ALL 
-					         SELECT w.WebCategoryID, 
-							        w.WebCategoryDescription, 
-							        w.ParentID, 
-							        w.NestedLevel,
-                                    w.SortOrder
-					         FROM   WebCategories w 
-							        INNER JOIN webcat c 
-									        ON c.WebCategoryID = w.ParentID) 
-			        SELECT * 
-			        FROM   webcat 
-		        ", new
+                var data = context.Query<ItemCategoryResponse>(QueryUtility.itemCategoryList_Query, new
                 {
                     webid = 1,
                     webcategoryid = webCategoryID
@@ -51,12 +30,12 @@ namespace WinkNatural.Services.Services
             }
 
             return categories.OrderBy(c => c.SortOrder).ToList();
-        } 
+        }
 
         //mk
 
         //public ShopProductsResponse GetShopProducts()
-        public List<ShopProductsResponse> GetShopProducts(int categoryID , int pageSize, int pageIndex , string[] sizes = null, int sortBy = 0)
+        public List<ShopProductsResponse> GetShopProducts(int categoryID, int pageSize, int pageIndex, string[] sizes = null, int sortBy = 0)
         {
             categoryID = categoryID == 0 ? 1 : categoryID;
             var categories = new List<ShopProductsResponse>();
@@ -65,7 +44,7 @@ namespace WinkNatural.Services.Services
             var newItems = new List<ShopProductsResponse>();
 
             itemsRequest = new GetItemsRequest
-            { 
+            {
                 IncludeChildCategories = true,
                 CategoryID = categoryID
             };
@@ -77,37 +56,18 @@ namespace WinkNatural.Services.Services
 
         public static IEnumerable<ShopProductsResponse> GetItems(GetItemsRequest request, bool includeItemDescriptions = true)
         {
-           var tempCategoryIDs = new List<int>();
+            var tempCategoryIDs = new List<int>();
             var categoryIDs = new List<int>();
             if (request.CategoryID != null)
             {
                 // Get all category ids underneath the request's category id
                 if (request.IncludeChildCategories)
                 {
-                      using (var context = Common.Utils.DbConnection.Sql())
-                        {
+                    using (var context = Common.Utils.DbConnection.Sql())
+                    {
 
 
-                            categoryIDs.AddRange(context.Query<int>(@"
-                            WITH webcat (WebCategoryID, WebCategoryDescription, ParentID, NestedLevel) 
-                                 AS (SELECT WebCategoryID, 
-                                            WebCategoryDescription, 
-                                            ParentID, 
-                                            NestedLevel 
-                                     FROM   WebCategories 
-                                     WHERE  WebCategoryID = @masterCategoryID
-                                            AND WebID = @webid
-                                     UNION ALL 
-                                     SELECT w.WebCategoryID, 
-                                            w.WebCategoryDescription, 
-                                            w.ParentID, 
-                                            w.NestedLevel 
-                                     FROM   WebCategories w 
-                                            INNER JOIN webcat c 
-                                                    ON c.WebCategoryID = w.ParentID) 
-                            SELECT WebCategoryID
-                            FROM   webcat
-                        ", new
+                        categoryIDs.AddRange(context.Query<int>(QueryUtility.categoryIdList_Query, new
                         {
                             webid = 1,
                             masterCategoryID = request.CategoryID
@@ -127,22 +87,7 @@ namespace WinkNatural.Services.Services
 
                 using (var context = Common.Utils.DbConnection.Sql())
                 {
-                    categoryItemCodes = context.Query<string>(@"
-                        SELECT DISTINCT
-	                        i.ItemCode
-                            ,c.SortOrder
-                        FROM 
-                            WebCategoryItems c
-	                        INNER JOIN Items i
-		                        on c.ItemID = i.ItemID
-	                        INNER JOIN WebCategories w
-		                        on w.WebID = c.WebID
-		                        and w.WebCategoryID = c.WebCategoryID
-                        WHERE 
-	                        c.WebID = @webid
-	                        and c.WebCategoryID in @webcategoryids
-                        ORDER By c.SortOrder
-                    ", new
+                    categoryItemCodes = context.Query<string>(QueryUtility.categoryItemCodesList_Query, new
                     {
                         webid = 1,
                         webcategoryids = categoryIDs
@@ -160,63 +105,7 @@ namespace WinkNatural.Services.Services
                 var tempItemCodeList = new List<string>();
                 using (var context = Common.Utils.DbConnection.Sql())
                 {
-                    tempItemCodeList = context.Query<string>(@"                
-                    ;WITH 
-                        webcat 
-                     (
-                        WebCategoryID
-                        ,WebCategoryDescription
-                        ,ParentID
-                        ,NestedLevel
-                        ,SortOrder
-                     ) 
-				     AS 
-                     (
-                        SELECT 
-                            WebCategoryID 
-						    ,WebCategoryDescription
-						    ,ParentID 
-						    ,NestedLevel
-                            ,SortOrder 
-					    FROM   
-                            WebCategories 
-					    WHERE  
-                            WebCategoryID = @masterCategoryID
-						    AND WebID = @webid
-					    
-                        UNION ALL
-                         
-					    SELECT 
-                            w.WebCategoryID 
-						    ,w.WebCategoryDescription 
-						    ,w.ParentID
-						    ,w.NestedLevel
-                            ,w.SortOrder
-					    FROM   
-                            WebCategories w 
-					        INNER JOIN webcat c 
-						        ON c.WebCategoryID = w.ParentID
-                    ) 
-                    SELECT 
-                        i.ItemCode
-                    FROM 
-                        WebCategoryItems c
-	                    INNER JOIN Items i
-		                    ON c.ItemID = i.ItemID
-                    WHERE 
-                        c.WebCategoryID = (
-                                            SELECT TOP 1 
-                                                WebCategoryID 
-					                        FROM 
-                                                webcat 
-                                            WHERE 
-                                                ParentID = @masterCategoryID 
-					                        ORDER BY 
-                                                SortOrder
-                                          )
-                    ORDER BY
-                        c.SortOrder
-                    ", new
+                    tempItemCodeList = context.Query<string>(QueryUtility.tempItemCodeList_Query, new
                     {
                         webid = 1,
                         masterCategoryID = request.CategoryID
@@ -231,14 +120,14 @@ namespace WinkNatural.Services.Services
             if (request.ItemCodes.Length == 0) yield break;
 
             // get the item information             
-            var priceTypeID = request.PriceTypeID  ;
+            var priceTypeID = request.PriceTypeID;
 
             var items = GetItemInformation(request, priceTypeID);  //: GetItemList(request, priceTypeID);
 
             // Populate the group members and dynamic kits
             if (items.Any())
             {
-               // PopulateAdditionalItemData(items, request);
+                // PopulateAdditionalItemData(items, request);
             }
 
             if (request.SortBy == 1)
@@ -272,7 +161,7 @@ namespace WinkNatural.Services.Services
                 yield return item;
             }
         }
-               
+
 
         [NonAction]
         private static List<ShopProductsResponse> GetItemInformation(GetItemsRequest request, int priceTypeID)
@@ -289,90 +178,18 @@ namespace WinkNatural.Services.Services
                     _ => "i.itemId desc",// Newest Arrivals
                 };
                 int languageID = request.LanguageID;
-                    List<string> itemCodes = request.ItemCodes.ToList();
+                List<string> itemCodes = request.ItemCodes.ToList();
 
                 using var context = Common.Utils.DbConnection.Sql();
-                apiItems = context.Query<ShopProductsResponse>(@"
-                			    SELECT
-	                                ItemID = i.ItemID,
-	                                ItemCode = i.ItemCode,
-	                                ItemDescription = 
-		                                case 
-			                                when i.IsGroupMaster = 1 then COALESCE(i.GroupDescription, il.ItemDescription, i.ItemDescription)
-			                                when il.ItemDescription != '' then COALESCE(il.ItemDescription, i.ItemDescription)
-							                else i.ItemDescription
-		                                end,
-	                                Weight = i.Weight,
-	                                ItemTypeID = i.ItemTypeID,
-	                                TinyImageUrl = i.TinyImageName,
-	                                SmallImageUrl = i.SmallImageName,
-	                                LargeImageUrl = i.LargeImageName,
-	                                ShortDetail1 = COALESCE(il.ShortDetail, i.ShortDetail),
-	                                ShortDetail2 = COALESCE(il.ShortDetail2, i.ShortDetail2),
-	                                ShortDetail3 = COALESCE(il.ShortDetail3, i.ShortDetail3),
-	                                ShortDetail4 = COALESCE(il.ShortDetail4, i.ShortDetail4),"
-                          + (true
-                            ? @"LongDetail1 = COALESCE(il.LongDetail, i.LongDetail),
-	                                LongDetail2 = COALESCE(il.LongDetail2, i.LongDetail2),
-	                                LongDetail3 = COALESCE(il.LongDetail3, i.LongDetail3),
-	                                LongDetail4 = COALESCE(il.LongDetail4, i.LongDetail4),"
-                            : string.Empty)
-                          + @"IsVirtual = i.IsVirtual,
-	                                AllowOnAutoOrder = i.AllowOnAutoOrder,
-	                                IsGroupMaster = i.IsGroupMaster,
-	                                IsDynamicKitMaster = cast(case when i.ItemTypeID = 2 then 1 else 0 end as bit),
-	                                GroupMasterItemDescription = i.GroupDescription,
-	                                GroupMembersDescription = i.GroupMembersDescription,
-	                                Field1 = i.Field1,
-	                                Field2 = i.Field2,
-	                                Field3 = i.Field3,
-	                                Field4 = i.Field4,
-	                                Field5 = i.Field5,
-	                                Field6 = i.Field6,
-	                                Field7 = i.Field7,
-	                                Field8 = i.Field8,
-	                                Field9 = i.Field9,
-	                                Field10 = i.Field10,
-	                                OtherCheck1 = i.OtherCheck1,
-	                                OtherCheck2 = i.OtherCheck2,
-	                                OtherCheck3 = i.OtherCheck3,
-	                                OtherCheck4 = i.OtherCheck4,
-	                                OtherCheck5 = i.OtherCheck5,
-	                                Price = ip.Price,
-	                                CurrencyCode = ip.CurrencyCode,
-	                                BV = ip.BusinessVolume,
-	                                CV = ip.CommissionableVolume,
-	                                OtherPrice1 = ip.Other1Price,
-	                                OtherPrice2 = ip.Other2Price,
-	                                OtherPrice3 = ip.Other3Price,
-	                                OtherPrice4 = ip.Other4Price,
-	                                OtherPrice5 = ip.Other5Price,
-	                                OtherPrice6 = ip.Other6Price,
-	                                OtherPrice7 = ip.Other7Price,
-	                                OtherPrice8 = ip.Other8Price,
-	                                OtherPrice9 = ip.Other9Price,
-	                                OtherPrice10 = ip.Other10Price
-                                FROM Items i
-	                                INNER JOIN ItemPrices ip
-		                                ON ip.ItemID = i.ItemID
-		                                    AND ip.PriceTypeID = @priceTypeID
-						                        AND ip.CurrencyCode = @currencyCode                                
-	                                INNER JOIN ItemWarehouses iw
-		                                ON iw.ItemID = i.ItemID
-		                                    AND iw.WarehouseID = @warehouse
-						            LEFT JOIN ItemLanguages il
-		                                ON il.ItemID = i.ItemID
-						                    AND il.LanguageID = @languageID
-					            WHERE i.ItemCode in @itemCodes
-                          ORDER BY " + sorting + @"
+                apiItems = context.Query<ShopProductsResponse>(QueryUtility.apiItemsListForProducts_Query + sorting + @"
                             ", new
-                          {
-                              warehouse = 1,
-                              currencyCode = "usd",
-                              languageID = languageID,
-                              priceTypeID = 1,
-                              itemCodes = itemCodes
-                          }).ToList();
+                {
+                    warehouse = 1,
+                    currencyCode = "usd",
+                    languageID = languageID,
+                    priceTypeID = 1,
+                    itemCodes = itemCodes
+                }).ToList();
 
                 var length = request.ItemCodes.Count();
                 var orderedItems = new List<ShopProductsResponse>();
@@ -395,11 +212,70 @@ namespace WinkNatural.Services.Services
 
 
                 var data = orderedItems;
-                return data; 
+                return data;
             }
             catch (Exception e)
             {
                 throw;
+            }
+        }
+
+        //public ShopProductsResponse GetProductDetailById(int[] productIds)
+        //{
+        //    //dynamic response;
+        //        using (var context = Common.Utils.DbConnection.Sql())
+        //        {
+        //      var  response= context.Query<ShopProductsResponse>(@"
+        //            SELECT 
+        //                 i.ItemID
+        //                ,i.ItemCode
+        //                ,i.ItemTypeID
+        //                ,ISNULL(il.ItemDescription, i.ItemDescription) as ItemDescription
+        //                ,ISNULL(il.ShortDetail, i.ShortDetail) as 'ShortDetail1'
+        //                ,ISNULL(il.ShortDetail2, i.ShortDetail2) as 'ShortDetail2'
+        //                ,ISNULL(il.ShortDetail3, i.ShortDetail3) as 'ShortDetail3'
+        //                ,ISNULL(il.ShortDetail4, i.ShortDetail4) as 'ShortDetail4'
+        //                ,ISNULL(il.LongDetail, i.LongDetail) as 'LongDetail1'
+        //                ,ISNULL(il.LongDetail2, i.LongDetail2) as 'LongDetail2'
+        //                ,ISNULL(il.LongDetail3, i.LongDetail3) as 'LongDetail3'
+        //                ,ISNULL(il.LongDetail4, i.LongDetail4) as 'LongDetail4'
+        //                ,i.TinyImageName as 'TinyImageUrl'
+        //                ,i.SmallImageName as 'SmallImageUrl'
+        //                ,i.LargeImageName as 'LargeImageUrl'
+        //              FROM Items i
+        //            LEFT JOIN ItemLanguages il
+        //                ON il.ItemID = i.ItemID
+        //                AND il.LanguageID = @languageID
+        //              WHERE i.ItemID in @ids
+        //        ", new
+        //        {
+        //            ids = productIds,
+        //            languageID = (int)0
+        //        }).ToList();
+        //        //ShopProductsResponse shopProducts = new ShopProductsResponse();
+        //        //shopProducts = response[0];
+        //        return response[0];
+        //    }
+        //}
+        public ShopProductsResponse GetProductDetailById(string[] itemCodes)
+        {
+            //dynamic response;
+            using (var context = Common.Utils.DbConnection.Sql())
+            {
+                var response = context.Query<ShopProductsResponse>(QueryUtility.getProductDetailById_Query, new
+                {
+                    warehouse = 1,
+                    currencyCode = "usd",
+                    languageID = 0,
+                    priceTypeID = 1,
+                    itemCodes = itemCodes
+
+                    //ids = productIds,
+                    //languageID = (int)0
+                }).ToList();
+                //ShopProductsResponse shopProducts = new ShopProductsResponse();
+                //shopProducts = response[0];
+                return response[0];
             }
         }
 
@@ -410,12 +286,7 @@ namespace WinkNatural.Services.Services
                 object bytes;
                 using (var context = Common.Utils.DbConnection.Sql())
                 {
-                    var query = @"SELECT TOP 1 
-                                    ImageData 
-                                  FROM 
-                                    ItemImages 
-                                  WHERE 
-                                    ImageName = @Name";
+                    var query = QueryUtility.productImage_Query;
 
                     bytes = context.ExecuteScalar(query, new { Name = imageName });
                 }
@@ -466,7 +337,7 @@ namespace WinkNatural.Services.Services
             return categories.OrderBy(c => c.SortOrder).ToList();
         }
 
-        
+
 
         #endregion
     }
