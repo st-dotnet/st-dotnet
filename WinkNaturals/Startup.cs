@@ -16,6 +16,7 @@ using ExigoResourceSet;
 using System.IO;
 using WinkNatural.Common.Extensions;
 using Microsoft.Extensions.FileProviders;
+using System.Text.Json.Serialization;
 
 namespace WinkNatural.Web.WinkNaturals
 {
@@ -47,8 +48,13 @@ namespace WinkNatural.Web.WinkNaturals
             {
                 mc.AddProfile(new MappingProfile());
             });
+            //        services.AddControllers().AddJsonOptions(x =>
+            //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.ig);
 
+            services.AddControllers().AddNewtonsoftJson(x =>
+  x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             IMapper mapper = mappingConfig.CreateMapper();
+
             services.AddSingleton(mapper);
 
             //Exigo resourceset  configuration
@@ -83,6 +89,8 @@ namespace WinkNatural.Web.WinkNaturals
                     ValidateAudience = false
                 };
             });
+          
+          
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WinkNaturals", Version = "v1" });

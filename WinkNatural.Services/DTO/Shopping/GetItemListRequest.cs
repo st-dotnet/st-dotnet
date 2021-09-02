@@ -1,8 +1,8 @@
 ﻿namespace WinkNatural.Services.DTO.Shopping
 {
-    public class GetItemsRequest
+    public class GetItemListRequest
     { 
-        public GetItemsRequest()
+        public GetItemListRequest()
         {
             this.ItemCodes = new string[0];
             this.IncludeDynamicKitChildren = true;

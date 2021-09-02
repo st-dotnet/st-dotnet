@@ -232,3 +232,6 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\ref\WinkNaturals.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.pdb
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.genruntimeconfig.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

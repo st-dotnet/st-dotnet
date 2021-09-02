@@ -202,6 +202,19 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
         }
       },
+      "Microsoft.AspNetCore.JsonPatch/5.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Mvc.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -240,6 +253,23 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.JsonPatch": "5.0.9",
+          "Newtonsoft.Json": "12.0.2",
+          "Newtonsoft.Json.Bson": "1.0.2"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.ResponseCaching.Abstractions/2.2.0": {
         "type": "package",
@@ -667,6 +697,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Newtonsoft.Json.Bson/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
         }
       },
       "NLog/4.7.10": {
@@ -2369,6 +2411,23 @@
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
+    "Microsoft.AspNetCore.JsonPatch/5.0.9": {
+      "sha512": "Y898BNDwTNaLK9AV4sZfYUeVC0LtWP0VdcOd04txbpFpFv5BgYbiLumQkmecwX40+KnxsqxGSCcOB8buBeadtw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.jsonpatch/5.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.JsonPatch.dll",
+        "lib/net461/Microsoft.AspNetCore.JsonPatch.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
+        "microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Mvc.Abstractions/2.2.0": {
       "sha512": "ET6uZpfVbGR1NjCuLaLy197cQ3qZUjzl7EG5SL4GfJH/c9KRE89MMBrQegqWsh0w1iRUB/zQaK0anAjxa/pz4g==",
       "type": "package",
@@ -2393,6 +2452,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.xml",
         "microsoft.aspnetcore.mvc.core.2.2.5.nupkg.sha512",
         "microsoft.aspnetcore.mvc.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.9": {
+      "sha512": "tJ7i6BDf/y+iKc1fuS6SRwelcSvhHkfQ86RhHVpUol4LfcW3WnSSL+njPuT2KmJidfJ349/7+eb/pCERHYG0/A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/5.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.5.0.9.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
     "Microsoft.AspNetCore.ResponseCaching.Abstractions/2.2.0": {
@@ -3059,6 +3133,27 @@
         "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "Newtonsoft.Json.Bson/1.0.2": {
+      "sha512": "QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+      "type": "package",
+      "path": "newtonsoft.json.bson/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net45/Newtonsoft.Json.Bson.dll",
+        "lib/net45/Newtonsoft.Json.Bson.pdb",
+        "lib/net45/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.xml",
+        "newtonsoft.json.bson.1.0.2.nupkg.sha512",
+        "newtonsoft.json.bson.nuspec"
       ]
     },
     "NLog/4.7.10": {
@@ -7053,6 +7148,7 @@
       "Dapper >= 2.0.90",
       "Exigo.Api.Client >= 1.0.3",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.7",
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 5.0.9",
       "Microsoft.Data.Sqlite.Core >= 5.0.8",
       "NLog >= 4.7.10",
       "NLog.Web.AspNetCore >= 4.13.0",
@@ -7124,6 +7220,10 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[5.0.7, )"
+          },
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "target": "Package",
+            "version": "[5.0.9, )"
           },
           "Microsoft.Data.Sqlite.Core": {
             "target": "Package",
