@@ -10,10 +10,13 @@ using WinkNatural.Common.Utils.Enum;
 using WinkNatural.Services.DTO.Customer;
 using WinkNatural.Services.Interfaces;
 
+
 namespace WinkNatural.Services.Services
 {
     public class AuthenticateService : IAuthenticateService
     {
+        
+
         private readonly ExigoApiClient exigoApiClient = new("WinkNaturals", "API_Web", "PB45DY5J5pmq9anE");
         private readonly IConfiguration _config;
         private readonly ICustomerService _customerService;

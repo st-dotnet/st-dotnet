@@ -17,6 +17,7 @@ using System.IO;
 using WinkNatural.Common.Extensions;
 using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
+using WinkNatural.Common.Utils;
 
 namespace WinkNatural.Web.WinkNaturals
 {
@@ -41,6 +42,7 @@ namespace WinkNatural.Web.WinkNaturals
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IEnrollmentService, EnrollmentService>();
             services.AddScoped<IShoppingService, ShoppingService>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             services.AddControllers();
 
@@ -52,8 +54,13 @@ namespace WinkNatural.Web.WinkNaturals
             //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.ig);
 
             services.AddControllers().AddNewtonsoftJson(x =>
-  x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             IMapper mapper = mappingConfig.CreateMapper();
+
+            ExigoConfig exigoconfig = Configuration
+             .GetSection(nameof(ExigoConfig))
+             .Get<ExigoConfig>();
+            ExigoConfig.Instance = exigoconfig;
 
             services.AddSingleton(mapper);
 

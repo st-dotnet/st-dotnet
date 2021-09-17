@@ -55,8 +55,38 @@ namespace WinkNatural.Services.DTO.Shopping
         public bool IsComplete { get; }
     }
 
-    public class ShippingAddress
+    public class ShippingAddress :Address
     {
+
+        public ShippingAddress() { }
+        public ShippingAddress(Address address)
+        {
+            //AddressType = address.AddressType;
+            Address1 = address.Address1;
+            Address2 = address.Address2;
+            City = address.City;
+            State = address.State;
+            Zip = address.Zip;
+            Country = address.Country;
+        }
+        public ShippingAddress(Address address, ShippingAddress sAddress, string phone)
+        {
+            AddressType = address.AddressType;
+            Address1 = address.Address1;
+            Address2 = address.Address2;
+            City = address.City;
+            State = address.State;
+            Zip = address.Zip;
+            Country = address.Country;
+            FirstName = sAddress.FirstName;
+            LastName = sAddress.LastName;
+            Phone = phone;
+        }
+        public ShippingAddress(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
         // [Required(ErrorMessageResourceName = "FirstNameRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "FirstName", ResourceType = typeof(Common.Resources.Models))]
         public string FirstName { get; set; }
 

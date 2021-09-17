@@ -32,12 +32,6 @@ D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.dll
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\ref\WinkNatural.Common.dll
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.pdb
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.deps.json
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\ref\WinkNatural.Common.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.pdb
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\es-US\WinkNatural.Common.resources.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.csproj.AssemblyReference.cache
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.Resources.Models.resources
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.Resources.Models.es-US.resources
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.csproj.GenerateResource.cache
@@ -45,7 +39,13 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNa
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.AssemblyInfoInputs.cache
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.AssemblyInfo.cs
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.csproj.CoreCompileInputs.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.deps.json
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\ref\WinkNatural.Common.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\WinkNatural.Common.pdb
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\bin\Debug\net5.0\es-US\WinkNatural.Common.resources.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\es-US\WinkNatural.Common.resources.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\ref\WinkNatural.Common.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.pdb
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.csproj.AssemblyReference.cache

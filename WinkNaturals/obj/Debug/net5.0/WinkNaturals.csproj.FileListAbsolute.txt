@@ -154,6 +154,12 @@ D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\Wi
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\ref\WinkNaturals.dll
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.pdb
 D:\Sandeep Projects\Wink - 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.genruntimeconfig.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.GeneratedMSBuildEditorConfig.editorconfig
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.AssemblyInfoInputs.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.AssemblyInfo.cs
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.csproj.CoreCompileInputs.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.MvcApplicationPartsAssemblyInfo.cache
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.csproj.AssemblyReference.cache
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\appsettings.Development.json
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\appsettings.json
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\App_Data\CommonWeb.json
@@ -170,6 +176,8 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\AutoMapper.E
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Dapper.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Exigo.Api.Client.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.Data.Sqlite.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
@@ -180,6 +188,7 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.Id
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.OpenApi.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\NLog.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\NLog.Extensions.Logging.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\NLog.Web.AspNetCore.dll
@@ -216,13 +225,6 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\WinkNatural.
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\WinkNatural.Services.pdb
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\WinkNatural.Common.pdb
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\es-US\WinkNatural.Common.resources.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.csproj.AssemblyReference.cache
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.GeneratedMSBuildEditorConfig.editorconfig
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.AssemblyInfoInputs.cache
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.AssemblyInfo.cs
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.csproj.CoreCompileInputs.cache
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.MvcApplicationPartsAssemblyInfo.cs
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.MvcApplicationPartsAssemblyInfo.cache
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\staticwebassets\WinkNaturals.StaticWebAssets.Manifest.cache
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\staticwebassets\WinkNaturals.StaticWebAssets.xml
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\scopedcss\bundle\WinkNaturals.styles.css
@@ -232,6 +234,4 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\ref\WinkNaturals.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.pdb
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.genruntimeconfig.cache
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\Wink Naturals 18-08-2021\st-dotnet\WinkNaturals\obj\Debug\net5.0\WinkNaturals.MvcApplicationPartsAssemblyInfo.cs

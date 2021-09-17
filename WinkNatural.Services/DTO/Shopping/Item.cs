@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WinkNatural.Common.Utils.Enum;
 
 namespace WinkNaturals.Models
 {
@@ -84,7 +85,7 @@ namespace WinkNaturals.Models
         public string ParentItemCode { get; set; }
         public string GroupMasterItemCode { get; set; }
         public string DynamicKitCategory { get; set; }
-       // public ShoppingCartItemType Type { get; set; }
+        public ShoppingCartItemType Type { get; set; }
 
         public int CategoryID { get; set; }
         public int TotalItems { get; set; }
