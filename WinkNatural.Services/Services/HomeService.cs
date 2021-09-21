@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinkNatural.Common.Utils;
 using WinkNatural.Services.DTO.Customer;
 using WinkNatural.Services.Interfaces;
 using WinkNatural.Services.Utilities;
@@ -14,7 +15,8 @@ namespace WinkNatural.Services.Services
     public class HomeService : IHomeService
     {
         private readonly string emailSubject = "Contact Us Email";
-        private readonly ExigoApiClient exigoApiClient = new("WinkNaturals", "API_Web", "PB45DY5J5pmq9anE");
+        private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
+
         private readonly IConfiguration _config;
 
         public HomeService(IConfiguration config)

@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinkNatural.Common.Utils;
 using WinkNatural.Services.DTO;
 using WinkNatural.Services.Interfaces;
 
@@ -16,8 +17,9 @@ namespace WinkNatural.Services.Services
 {
     public class EnrollmentService : IEnrollmentService
     {
-        private readonly ExigoApiClient exigoApiClient = new("WinkNaturals", "API_Web", "PB45DY5J5pmq9anE");
-        private readonly IConfiguration _config;
+		private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
+
+		private readonly IConfiguration _config;
         public EnrollmentService(IConfiguration config)
         {
             _config = config;

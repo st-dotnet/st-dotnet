@@ -41,7 +41,7 @@ namespace WinkNaturals.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetProductList/{categoryID:int}/{sortBy:int}")]
-        public IActionResult GetProductList(int categoryID,int sortBy)
+        public IActionResult GetProductList(int categoryID, int sortBy)
         {
             return Ok(_shoppingService.GetShopProducts(categoryID, sortBy));
         }
@@ -105,8 +105,8 @@ namespace WinkNaturals.Controllers
             //shipingAddress.Phone = transactionRequest.createOrderRequest.Phone;
             //var shippingAddress = new ShippingAddress(address, shipingAddress, transactionRequest.createOrderRequest.Phone);
             //var orderList = new List<OrderDetailRequest>();
-           
-            
+
+
 
             // var willCallAddress = transactionRequest.createOrderRequest.ShipMethodID == 9 ? shippingAddress : shippingAddress;
             //var details = new List<ApiRequest>();
@@ -122,81 +122,81 @@ namespace WinkNaturals.Controllers
             //if (hasOrder)
             //{
             //    var orderRequest=new CreateOrderRequest();
-                //var orderRequest = new CreateOrderRequest(OrderConfiguration, PropertyBag.ShipMethodID, orderItems, willCallAddress)
-                //{
-                //    CustomerID = Identity.Customer.CustomerID,
-                //    Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
-                //};
-                //if (items.Coupon != null && items.Coupon.Code.IsNotNullOrEmpty())
-                //{
-                //    orderRequest.Other16 = items.Coupon.Code;
-                //}
-                //if (items.ContainsSpecial)
-                //{
-                //    orderRequest.Other18 = "true";
-                //}
-                //details.Add(orderRequest);
+            //var orderRequest = new CreateOrderRequest(OrderConfiguration, PropertyBag.ShipMethodID, orderItems, willCallAddress)
+            //{
+            //    CustomerID = Identity.Customer.CustomerID,
+            //    Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
+            //};
+            //if (items.Coupon != null && items.Coupon.Code.IsNotNullOrEmpty())
+            //{
+            //    orderRequest.Other16 = items.Coupon.Code;
+            //}
+            //if (items.ContainsSpecial)
+            //{
+            //    orderRequest.Other18 = "true";
+            //}
+            //details.Add(orderRequest);
 
             //}
             //if (hasAutoOrder)
             //{
-                //var autoOrderRequest = new CreateAutoOrderRequest(AutoOrderConfiguration, DAL.GetAutoOrderPaymentType(PropertyBag.PaymentMethod), PropertyBag.AutoOrderStartDate, 8, autoOrderItems, PropertyBag.ShippingAddress)
-                //{
-                //    CustomerID = Identity.Customer.CustomerID,
-                //    Frequency = PropertyBag.AutoOrderFrequencyType
-                //};
+            //var autoOrderRequest = new CreateAutoOrderRequest(AutoOrderConfiguration, DAL.GetAutoOrderPaymentType(PropertyBag.PaymentMethod), PropertyBag.AutoOrderStartDate, 8, autoOrderItems, PropertyBag.ShippingAddress)
+            //{
+            //    CustomerID = Identity.Customer.CustomerID,
+            //    Frequency = PropertyBag.AutoOrderFrequencyType
+            //};
 
-                //var autoOrderRequest = new CreateAutoOrderRequest();
-                //var autoOrderRequest = new CreateAutoOrderRequest()
-                //{
-                //    CustomerID = items.CustomerID,
-                //    Frequency = items.AutoOrderFrequencyType
-                //};
+            //var autoOrderRequest = new CreateAutoOrderRequest();
+            //var autoOrderRequest = new CreateAutoOrderRequest()
+            //{
+            //    CustomerID = items.CustomerID,
+            //    Frequency = items.AutoOrderFrequencyType
+            //};
 
-                //var items1 = _shoppingService.GetItems(new GetItemsRequest
-                //{
-                //   // Configuration = AutoOrderConfiguration,
-                //    ItemCodes = autoOrderRequest.Details.Select(i => i.ItemCode).ToArray(),
-                //}).tolist();
+            //var items1 = _shoppingService.GetItems(new GetItemsRequest
+            //{
+            //   // Configuration = AutoOrderConfiguration,
+            //    ItemCodes = autoOrderRequest.Details.Select(i => i.ItemCode).ToArray(),
+            //}).tolist();
 
-          //      foreach (var itm in autoOrderRequest.Details)
-          //      {
-          //          itm.PriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-          //          itm.TaxableEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-          //          itm.ShippingPriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-          //          itm.BusinessVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.BV).FirstOrDefault();
-          //          itm.CommissionableVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.CV).FirstOrDefault();
-          //      }
-          //      details.Add(autoOrderRequest);
-          //      if (items.CustomerTypeID == CustomerTypes.RetailCustomer)
-          //      {
+            //      foreach (var itm in autoOrderRequest.Details)
+            //      {
+            //          itm.PriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
+            //          itm.TaxableEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
+            //          itm.ShippingPriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
+            //          itm.BusinessVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.BV).FirstOrDefault();
+            //          itm.CommissionableVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.CV).FirstOrDefault();
+            //      }
+            //      details.Add(autoOrderRequest);
+            //      if (items.CustomerTypeID == CustomerTypes.RetailCustomer)
+            //      {
 
-          //          var updateCustomerRequest = new UpdateCustomerRequest
-          //          {
-          //              CustomerID = items.CustomerID,
-          //              CustomerType = CustomerTypes.PreferredCustomer,
-          //              Field1 = hasAutoOrder ? "1" : ""
-          //          };
-          //          details.Add(updateCustomerRequest);
-          //      }
-               
-          //  }
-          //  var remainder = 0m;
+            //          var updateCustomerRequest = new UpdateCustomerRequest
+            //          {
+            //              CustomerID = items.CustomerID,
+            //              CustomerType = CustomerTypes.PreferredCustomer,
+            //              Field1 = hasAutoOrder ? "1" : ""
+            //          };
+            //          details.Add(updateCustomerRequest);
+            //      }
 
-          //  #region Point Account Validation Logic
-          //if(Items.UsePointsAsPayment)
-          //  {
-          //      var orderCalcRequest = new OrderCalculationRequest
-          //      {
-          //          Configuration = OrderConfiguration,
-          //          Items = orderItems,
-          //          Address = PropertyBag.ShippingAddress,
-          //          ShipMethodID = PropertyBag.ShipMethodID,
-          //          CustomerID = Identity.Customer.CustomerID,
-          //          Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
-          //      };
-          //  }
-           // #endregion
+            //  }
+            //  var remainder = 0m;
+
+            //  #region Point Account Validation Logic
+            //if(Items.UsePointsAsPayment)
+            //  {
+            //      var orderCalcRequest = new OrderCalculationRequest
+            //      {
+            //          Configuration = OrderConfiguration,
+            //          Items = orderItems,
+            //          Address = PropertyBag.ShippingAddress,
+            //          ShipMethodID = PropertyBag.ShipMethodID,
+            //          CustomerID = Identity.Customer.CustomerID,
+            //          Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
+            //      };
+            //  }
+            // #endregion
 
 
 
@@ -244,7 +244,7 @@ namespace WinkNaturals.Controllers
         [HttpPost("UpdateOrder")]
         public IActionResult UpdateOrder(UpdateOrderRequest updateOrderRequest)
         {
-           return Ok(_shoppingService.UpdateOrder(updateOrderRequest));
+            return Ok(_shoppingService.UpdateOrder(updateOrderRequest));
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace WinkNaturals.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("CreatePaymentCheck")]
-        public IActionResult CreatePaymentCheck(CreatePaymentCheckRequest  createPaymentCheckRequest)
+        public IActionResult CreatePaymentCheck(CreatePaymentCheckRequest createPaymentCheckRequest)
         {
             return Ok(_shoppingService.CreatePaymentCheck(createPaymentCheckRequest));
         }
@@ -385,7 +385,7 @@ namespace WinkNaturals.Controllers
         }
 
         [HttpPost("AddUpdateCustomerAddress")]
-        public IActionResult AddUpdateCustomerAddress(int CustomerID,Address address)
+        public IActionResult AddUpdateCustomerAddress(int CustomerID, Address address)
         {
             return Ok(_shoppingService.AddUpdateCustomerAddress(CustomerID, address));
 
@@ -402,7 +402,7 @@ namespace WinkNaturals.Controllers
         {
             return Ok(_shoppingService.GetOrder(ordersRequest));
         }
-        [HttpPost("SearchProducts")]
+        [HttpPost("SearchProducts/{query}")]
         public IActionResult SearchProducts(string query)
         {
             return Ok(_shoppingService.SearchProducts(query));

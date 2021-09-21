@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinkNatural.Common.Utils;
 using WinkNatural.Services.Interfaces;
 
 namespace WinkNatural.Services.Services
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ExigoApiClient exigoApiClient = new("WinkNaturals", "API_Web", "PB45DY5J5pmq9anE");
+        private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
+
         private readonly IConfiguration _config;
 
         public CustomerService(IConfiguration config)

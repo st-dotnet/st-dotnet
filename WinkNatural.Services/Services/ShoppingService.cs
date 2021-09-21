@@ -20,8 +20,6 @@ namespace WinkNatural.Services.Services
     public class ShoppingService : IShoppingService
     {
         private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
-
-
         /// <summary>
         /// GetItemCategory
         /// </summary>
