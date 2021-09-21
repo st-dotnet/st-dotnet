@@ -402,7 +402,7 @@ namespace WinkNaturals.Controllers
         {
             return Ok(_shoppingService.GetOrder(ordersRequest));
         }
-        [HttpPost("SearchProducts/{query}")]
+        [HttpGet("SearchProducts/{query}")]
         public IActionResult SearchProducts(string query)
         {
             return Ok(_shoppingService.SearchProducts(query));
