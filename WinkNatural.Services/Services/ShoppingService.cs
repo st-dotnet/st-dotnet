@@ -1590,6 +1590,40 @@ namespace WinkNatural.Services.Services
             }
         }
 
+        /// <summary>
+        /// PromoCode
+        /// </summary>
+        /// <param name="promoCode"></param>
+        /// <returns></returns>
+
+        public  PromoCode  GetPromoDetail(string promoCode)
+        {
+            var req = new PromoCode();
+            List<PromoCode> promo = new List<PromoCode>
+            {
+                new PromoCode{PromoID = 1, PromoName = "test1", DiscountPer = 10},
+                new PromoCode{PromoID = 2, PromoName = "test2", DiscountPer = 12},
+                new PromoCode{PromoID = 3, PromoName = "test3", DiscountPer = 15},
+                new PromoCode{PromoID = 4, PromoName = "test4", DiscountPer = 8},
+                new PromoCode{PromoID = 5, PromoName = "test5", DiscountPer = 5},
+                new PromoCode{PromoID = 6, PromoName = "test6", DiscountPer = 20},
+                new PromoCode{PromoID = 7, PromoName = "test7", DiscountPer = 25},
+                new PromoCode{PromoID = 8, PromoName = "test8", DiscountPer = 30}
+            };
+
+            try
+            {
+                var pair = promo.Where(x=> x.PromoName == promoCode.ToLower()).First();
+                req.PromoID = pair.PromoID;
+                req.PromoName = pair.PromoName; 
+                req.DiscountPer = pair.DiscountPer;
+                return req;
+            }
+            catch (Exception ex)
+            {
+                return new PromoCode { ErrorMessage = "Promo code doesn't exist." };
+            }
+        }
         #region Private methods
 
         public static List<ItemCategoryResponse> GetWebCategoriesRecursively(int webCategoryID)

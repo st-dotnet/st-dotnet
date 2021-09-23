@@ -49,6 +49,6 @@ namespace WinkNatural.Services.Interfaces
         // static IEnumerable<ShopProductsResponse> GetItems(GetItemListRequest request, bool includeItemDescriptions = true);
 
         ShopProductsResponse GetSpecialItem();
-
+        PromoCode GetPromoDetail(string promoCode);
     }
 }

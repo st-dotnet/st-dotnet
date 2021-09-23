@@ -415,5 +415,10 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetSpecialItem());
         }
 
+        [HttpGet("PromoCode")]
+        public IActionResult GetPromoCode(string promoCode)
+        {
+            return Ok(_shoppingService.GetPromoDetail(promoCode));
+        }
     }
 }
