@@ -415,7 +415,7 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetSpecialItem());
         }
 
-        [HttpGet("PromoCode")]
+        [HttpGet("PromoCode/{promoCode}")]
         public IActionResult GetPromoCode(string promoCode)
         {
             return Ok(_shoppingService.GetPromoDetail(promoCode));
