@@ -408,5 +408,12 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.SearchProducts(query));
         }
 
+        // To implement Special Item block in Cart
+        [HttpGet("GetSpecialItem")]
+        public IActionResult GetSpecialItem()
+        {
+            return Ok(_shoppingService.GetSpecialItem());
+        }
+
     }
 }

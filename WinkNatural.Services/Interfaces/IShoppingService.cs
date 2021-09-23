@@ -47,5 +47,8 @@ namespace WinkNatural.Services.Interfaces
         List<ShopProductsResponse> SearchProducts(string query);
 
         // static IEnumerable<ShopProductsResponse> GetItems(GetItemListRequest request, bool includeItemDescriptions = true);
+
+        ShopProductsResponse GetSpecialItem();
+
     }
 }

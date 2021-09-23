@@ -350,6 +350,29 @@ namespace WinkNatural.Services.Utilities
 					            WHERE i.ItemCode in @itemCodes
                           ";
 
-
+		public static string GetSpecialItem_Query = @"SELECT top 1
+	                                ItemID = i.ItemID,
+	                                ItemCode = i.ItemCode,
+	                                ItemDescription = i.ItemDescription,
+	                                ItemTypeID = i.ItemTypeID,
+	                                TinyImageUrl = i.TinyImageName,
+	                                SmallImageUrl = i.SmallImageName,
+	                                LargeImageUrl = i.LargeImageName,
+                                    Field4 = i.Field4,
+	                                Field5 = i.Field5,
+	                                Price = ip.Price,
+	                                CurrencyCode = ip.CurrencyCode
+                                FROM Items i
+	                                INNER JOIN ItemPrices ip
+		                                ON ip.ItemID = i.ItemID
+		                                    AND ip.PriceTypeID = @priceTypeID
+						                    AND ip.CurrencyCode = @currencyCode                                
+	                                INNER JOIN ItemWarehouses iw
+		                                ON iw.ItemID = i.ItemID
+		                                    AND iw.WarehouseID = @warehouse
+						            LEFT JOIN ItemLanguages il
+		                                ON il.ItemID = i.ItemID
+						                    AND il.LanguageID = @languageID
+					            WHERE i.Field5 is not null and  i.Field5 <> ''";
 	}
 }

@@ -1568,6 +1568,28 @@ namespace WinkNatural.Services.Services
             return res;
         }
 
+        /// <summary>
+        /// GetSpecialItem
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+
+        public ShopProductsResponse GetSpecialItem()
+        {
+            //dynamic response;
+            using (var context = Common.Utils.DbConnection.Sql())
+            {
+                var response = context.Query<ShopProductsResponse>(QueryUtility.GetSpecialItem_Query, new
+                {
+                    warehouse = 1,
+                    currencyCode = "usd",
+                    languageID = 0,
+                    priceTypeID = 1
+                }).ToList();
+                return response[0];
+            }
+        }
+
         #region Private methods
 
         public static List<ItemCategoryResponse> GetWebCategoriesRecursively(int webCategoryID)
