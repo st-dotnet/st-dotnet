@@ -81,7 +81,7 @@ namespace WinkNatural.Services.Services
             }
             catch (Exception ex)
             {
-                return new CustomerCreateResponse { ErrorMessage = ex.Message.ToString() };
+                return new CustomerCreateResponse { ErrorMessage = "Invalid UserName and Password " };
             }
         }
 
@@ -132,9 +132,8 @@ namespace WinkNatural.Services.Services
             }
             catch (Exception ex)
             {
-                return new CustomerUpdateResponse { Success = false, ErrorMessage = "Forgot password email not sent!" };
+                return new CustomerUpdateResponse { Success = false, ErrorMessage = "Sorry your email has not been found within our system" };
             }
-
         }
 
         /// <summary>
