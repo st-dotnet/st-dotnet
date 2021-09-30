@@ -146,7 +146,7 @@ namespace WinkNatural.Services.Services
             try
             {
                 //Check if Email is exists or not
-                if (!string.IsNullOrEmpty(request.Email))
+                if (!string.IsNullOrEmpty(request.Email) && string.IsNullOrEmpty(request.Username))
                 {
                     var customerEmailResult = await exigoApiClient.GetCustomersAsync(new GetCustomersRequest { Email = request.Email });
                     if (customerEmailResult.Customers.Length != 0) return true;
