@@ -2018,5 +2018,15 @@ namespace WinkNatural.Services.Services
         }
 
         #endregion
+
+        //To Get customer detail for editing.
+        public async Task<GetCustomersResponse> GetCustomerRealTime(int customerID)
+        {
+            var req = new GetCustomersRequest();
+            req.CustomerID = customerID;
+            var response = await exigoApiClient.GetCustomersAsync(req);
+            return response;
+        }
+
     }
 }

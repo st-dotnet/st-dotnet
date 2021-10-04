@@ -50,5 +50,10 @@ namespace WinkNatural.Services.Interfaces
 
         ShopProductsResponse GetSpecialItem();
         PromoCode GetPromoDetail(string promoCode);
+
+        //To Get customer detail for editing.
+        Task<GetCustomersResponse> GetCustomerRealTime(int customerID);
+        
+
     }
 }

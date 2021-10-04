@@ -420,5 +420,18 @@ namespace WinkNaturals.Controllers
         {
             return Ok(_shoppingService.GetPromoDetail(promoCode));
         }
+
+        [HttpGet("GetCustomerRealTime/{customerID:int}")]
+        //To Get customer detail for editing.
+        public IActionResult GetCustomerRealTime(int customerID)
+        {
+            return Ok(_shoppingService.GetCustomerRealTime(customerID));
+        }
+
+
+       
+
+
+
     }
 }
