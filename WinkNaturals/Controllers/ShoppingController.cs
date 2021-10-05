@@ -317,12 +317,6 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetSpecialItem());
         }
 
-        [HttpGet("PromoCode/{promoCode}")]
-        public IActionResult GetPromoCode(string promoCode)
-        {
-            return Ok(_shoppingService.GetPromoDetail(promoCode));
-        }
-
         [HttpGet("GetCustomerRealTime/{customerID:int}")]
         //To Get customer detail for editing.
         public IActionResult GetCustomerRealTime(int customerID)
@@ -330,8 +324,21 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetCustomerRealTime(customerID));
         }
 
+        //To update customer detail
+        [HttpPost("UpdateCustomer")]
+        public IActionResult UpdateCustomer(UpdateCustomerRequest updateCustomerRequest)
+        {
+            return Ok(_shoppingService.UpdateCustomer(updateCustomerRequest));
+        }
 
-       
+        //Apply promocode
+        [HttpGet("PromoCode/{promoCode}")]
+        public IActionResult GetPromoCode(string promoCode)
+        {
+            return Ok(_shoppingService.GetPromoDetail(promoCode));
+        }
+
+
 
 
 

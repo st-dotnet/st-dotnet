@@ -53,7 +53,7 @@ namespace WinkNatural.Services.Interfaces
 
         //To Get customer detail for editing.
         Task<GetCustomersResponse> GetCustomerRealTime(int customerID);
-        
 
+        Task<UpdateCustomerResponse> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest);
     }
 }

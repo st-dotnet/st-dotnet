@@ -1590,40 +1590,7 @@ namespace WinkNatural.Services.Services
             }
         }
 
-        /// <summary>
-        /// PromoCode
-        /// </summary>
-        /// <param name="promoCode"></param>
-        /// <returns></returns>
-
-        public  PromoCode  GetPromoDetail(string promoCode)
-        {
-            var req = new PromoCode();
-            List<PromoCode> promo = new List<PromoCode>
-            {
-                new PromoCode{PromoID = 1, PromoName = "test1", DiscountPer = 10},
-                new PromoCode{PromoID = 2, PromoName = "test2", DiscountPer = 12},
-                new PromoCode{PromoID = 3, PromoName = "test3", DiscountPer = 15},
-                new PromoCode{PromoID = 4, PromoName = "test4", DiscountPer = 8},
-                new PromoCode{PromoID = 5, PromoName = "test5", DiscountPer = 5},
-                new PromoCode{PromoID = 6, PromoName = "test6", DiscountPer = 20},
-                new PromoCode{PromoID = 7, PromoName = "test7", DiscountPer = 25},
-                new PromoCode{PromoID = 8, PromoName = "test8", DiscountPer = 30}
-            };
-
-            try
-            {
-                var pair = promo.Where(x=> x.PromoName == promoCode.ToLower()).First();
-                req.PromoID = pair.PromoID;
-                req.PromoName = pair.PromoName; 
-                req.DiscountPer = pair.DiscountPer;
-                return req;
-            }
-            catch (Exception ex)
-            {
-                return new PromoCode { ErrorMessage = "Promo code doesn't exist." };
-            }
-        }
+       
         #region Private methods
 
         public static List<ItemCategoryResponse> GetWebCategoriesRecursively(int webCategoryID)
@@ -2027,6 +1994,69 @@ namespace WinkNatural.Services.Services
             var response = await exigoApiClient.GetCustomersAsync(req);
             return response;
         }
+        /// <summary>
+        /// UpdateCustomer
+        /// </summary>
+        /// <param name="updateCustomerRequest"></param>
+        /// <returns></returns>
+        public async Task<UpdateCustomerResponse> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest)
+        {
+            try
+            {
+                var request = new UpdateCustomerRequest();
+                request.CustomerID = updateCustomerRequest.CustomerID;
+                request.FirstName = updateCustomerRequest.FirstName;
+                request.LastName = updateCustomerRequest.LastName;
+                request.LoginName = updateCustomerRequest.LoginName;
+                request.LoginPassword = updateCustomerRequest.LoginPassword;
+                request.MailAddress1 = updateCustomerRequest.MailAddress1;
+                request.MailAddress2 = updateCustomerRequest.MailAddress2;
+                request.MailAddress3 = updateCustomerRequest.MailAddress3;
+                request.MainAddress1 = updateCustomerRequest.MainAddress1;
+                request.MainAddress2 = updateCustomerRequest.MainAddress2;
+                request.MainAddress3 = updateCustomerRequest.MainAddress3;
+                request.OtherAddress1 = updateCustomerRequest.OtherAddress1;
+                request.OtherAddress2 = updateCustomerRequest.OtherAddress2;
+                request.OtherAddress3 = updateCustomerRequest.OtherAddress3;
+                request.Email = updateCustomerRequest.Email;
+                request.Phone = updateCustomerRequest.Phone;
+                request.MobilePhone = updateCustomerRequest.MobilePhone;
 
+                var response = await exigoApiClient.UpdateCustomerAsync(request);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+        /// <summary>
+        /// PromoCode
+        /// </summary>
+        /// <param name="promoCode"></param>
+        /// <returns></returns>
+
+        public PromoCode GetPromoDetail(string promoCode)
+        {
+            //dynamic response;
+            using (var context = Common.Utils.DbConnection.Sql())
+            {
+                var coupon = context.Query<PromoCode>(QueryUtility.GetCoupenCode_Query, new
+                {
+                    Code = promoCode
+                }).FirstOrDefault();
+
+                // return coupon;
+                if (coupon == null)
+                {
+                    return new PromoCode { ErrorMessage = "Oops. Coupon code " + promoCode + " is not valid." };
+                }
+                else
+                {
+                    return coupon;
+                }
+                
+            }
+        }
     }
 }

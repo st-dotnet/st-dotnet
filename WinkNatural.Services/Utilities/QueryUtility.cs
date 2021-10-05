@@ -374,5 +374,24 @@ namespace WinkNatural.Services.Utilities
 		                                ON il.ItemID = i.ItemID
 						                    AND il.LanguageID = @languageID
 					            WHERE i.Field5 is not null and  i.Field5 <> ''";
+
+		public static string GetCoupenCode_Query = @" SELECT TOP 1
+									[Code]
+									,[StartDate]
+									,[EndDate]
+									,[MinSubtotal]
+									,[FreeShipping]
+									,[PercentOff]
+									,[WebCategoryID]
+									,[MinRank]
+									,[MaxRank]
+									,[MinSubtotal]
+									,[SingleUseByCustomer]
+									,[DisplayOnWeb]
+									,[CreatedDate]
+									,[RowGuid]
+									,[CustomerTypes]
+									FROM [OrderCalcContext].[CouponCodes]
+									WHERE [Code] = @Code";
 	}
 }
