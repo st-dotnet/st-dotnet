@@ -73,6 +73,7 @@ namespace WinkNatural.Services.Services
                 var token = GenerateJwtToken(result);
                 return new CustomerCreateResponse
                 {
+                    CustomerId=customer.Customers[0].CustomerID,
                     Email = customer.Customers[0].Email,
                     LoginName = customer.Customers[0].LoginName,
                     Phone = customer.Customers[0].Phone,
@@ -151,7 +152,7 @@ namespace WinkNatural.Services.Services
                     var customerEmailResult = await exigoApiClient.GetCustomersAsync(new GetCustomersRequest { Email = request.Email });
                     if (customerEmailResult.Customers.Length != 0) return true;
                 }
-                else //Check if username is exists or not
+                if (!string.IsNullOrEmpty(request.Username))//Check if username is exists or not
                 {
                     var customerUsernameResult = await exigoApiClient.GetCustomersAsync(new GetCustomersRequest { LoginName = request.Username });
                     if (customerUsernameResult.Customers.Length != 0) return true;

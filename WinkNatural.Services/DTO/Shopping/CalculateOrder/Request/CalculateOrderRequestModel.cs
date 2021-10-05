@@ -51,11 +51,11 @@ namespace WinkNatural.Services.DTO.Shopping
         public string Zip { get; set; }
         public string Country { get; set; }
 
-        public string AddressDisplay { get; }
+       // public string AddressDisplay { get; }
         public bool IsComplete { get; }
     }
 
-    public class ShippingAddress :Address
+    public class ShippingAddress : Address
     {
 
         public ShippingAddress() { }
@@ -69,7 +69,7 @@ namespace WinkNatural.Services.DTO.Shopping
             Zip = address.Zip;
             Country = address.Country;
         }
-        public ShippingAddress(Address address, ShippingAddress sAddress, string phone)
+        public ShippingAddress(Address address, ShippingAddress sAddress)
         {
             AddressType = address.AddressType;
             Address1 = address.Address1;
@@ -80,7 +80,7 @@ namespace WinkNatural.Services.DTO.Shopping
             Country = address.Country;
             FirstName = sAddress.FirstName;
             LastName = sAddress.LastName;
-            Phone = phone;
+            //Phone = phone;
         }
         public ShippingAddress(string firstName, string lastName)
         {
@@ -110,26 +110,45 @@ namespace WinkNatural.Services.DTO.Shopping
         {
             get { return string.Join(" ", this.FirstName, this.LastName); }
         }
-        public AddressType AddressType { get; set; }
 
-        //[Required(ErrorMessageResourceName = "AddressOneRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "AddressOne", ResourceType = typeof(Common.Resources.Models))]
-        public string Address1 { get; set; }
+        public string AddressDisplay { get; }
+        //public AddressType AddressType { get; set; }
 
-        //[Display(Name = "AddressTwo", ResourceType = typeof(Common.Resources.Models))]
-        public string Address2 { get; set; }
+        ////[Required(ErrorMessageResourceName = "AddressOneRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "AddressOne", ResourceType = typeof(Common.Resources.Models))]
+        //public string Address1 { get; set; }
 
-        //[Required(ErrorMessageResourceName = "CityRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "City", ResourceType = typeof(Common.Resources.Models))]
-        public string City { get; set; }
+        ////[Display(Name = "AddressTwo", ResourceType = typeof(Common.Resources.Models))]
+        //public string Address2 { get; set; }
 
-        //[Required(ErrorMessageResourceName = "StateRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "State", ResourceType = typeof(Common.Resources.Models))]
-        public string State { get; set; }
+        ////[Required(ErrorMessageResourceName = "CityRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "City", ResourceType = typeof(Common.Resources.Models))]
+        //public string City { get; set; }
 
-        //[Required(ErrorMessageResourceName = "ZipRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "Zip", ResourceType = typeof(Common.Resources.Models))]
-        public string Zip { get; set; }
+        ////[Required(ErrorMessageResourceName = "StateRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "State", ResourceType = typeof(Common.Resources.Models))]
+        //public string State { get; set; }
 
-        //[Required(ErrorMessageResourceName = "CountryRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "Country", ResourceType = typeof(Common.Resources.Models))]
-        public string Country { get; set; }
+        ////[Required(ErrorMessageResourceName = "ZipRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "Zip", ResourceType = typeof(Common.Resources.Models))]
+        //public string Zip { get; set; }
 
+        ////[Required(ErrorMessageResourceName = "CountryRequired", ErrorMessageResourceType = typeof(Common.Resources.Models)), Display(Name = "Country", ResourceType = typeof(Common.Resources.Models))]
+        //public string Country { get; set; }
+
+    }
+    public interface IAddress
+    {
+        AddressType AddressType { get; set; }
+
+
+        string Address1 { get; set; }
+
+        string Address2 { get; set; }
+
+        string City { get; set; }
+
+        string State { get; set; }
+
+        string Zip { get; set; }
+
+        string Country { get; set; }
     }
 
     public class ShoppingCartItem
@@ -141,7 +160,7 @@ namespace WinkNatural.Services.DTO.Shopping
         public string ParentItemCode { get; set; }
         public string GroupMasterItemCode { get; set; }
         public string DynamicKitCategory { get; set; }
-        public  ShoppingCartItemType Type { get; set; }
+        public ShoppingCartItemType Type { get; set; }
         public string Field4 { get; set; }
         public string Field5 { get; set; }
         public bool OtherCheck2 { get; set; }
@@ -149,7 +168,7 @@ namespace WinkNatural.Services.DTO.Shopping
         public Nullable<decimal> TaxableEachOverride { get; set; }
         public Nullable<decimal> BusinessVolumeEachOverride { get; set; }
         public Nullable<decimal> CommissionableVolumeEachOverride { get; set; }
-        public  Nullable<decimal> ShippingPriceEachOverride { get; set; }
+        public Nullable<decimal> ShippingPriceEachOverride { get; set; }
     }
     public enum AddressType
     {

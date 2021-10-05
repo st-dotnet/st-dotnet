@@ -36,7 +36,17 @@ namespace WinkNatural.Web.WinkNaturals.Controllers
             try
             {
                 var createCustomerRequest = _mapper.Map<CreateCustomerRequest>(model);
+                var model1 = new CustomerValidationRequest();
+                model1.Email = model.Email;
+                model1.Username = model.LoginName;
 
+                //Validate username/email with Exigo service
+                bool validresult = await _authenticateService.IsEmailOrUsernameExists(model1);
+                if (validresult)
+                    return Ok(new CustomerCreateResponse
+                    {
+                        ErrorMessage = "Email or username already exist."
+                    });
                 //Create customer in Exigo service
                 await _authenticateService.CreateCustomer(createCustomerRequest);
 

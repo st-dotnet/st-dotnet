@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using WinkNatural.Common;
 using WinkNatural.Services.DTO;
+using static WinkNatural.Services.DTO.Shopping.CreditCard;
+using WinkNatural.Services.ExigoServices;
+using WinkNatural.Common.Utils;
 
 namespace WinkNaturals.Controllers
 {
@@ -18,6 +21,8 @@ namespace WinkNaturals.Controllers
     [ApiController]
     public class ShoppingController : ControllerBase
     {
+        private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
+
         private readonly IShoppingService _shoppingService;
         private readonly IMapper _mapper;
         public ShoppingController(IShoppingService shoppingService, IMapper mapper)
@@ -89,121 +94,14 @@ namespace WinkNaturals.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("SubmitCheckout")]
-        public IActionResult SubmitCheckout(TransactionalRequestModel transactionRequest)
+        public IActionResult SubmitCheckout(TransactionalRequestModel transactionRequests)
         {
-            //List<Item> items = new List<Item>();
-            //var shipingAddress = new ShippingAddress();
-            //var address = new Address();
-            //address.Address1 = transactionRequest.createOrderRequest.Address1;
-            //address.Address2 = transactionRequest.createOrderRequest.Address2;
-            //address.City = transactionRequest.createOrderRequest.City;
-            //address.State = transactionRequest.createOrderRequest.State;
-            //address.Zip = transactionRequest.createOrderRequest.Zip;
-            //address.Country = transactionRequest.createOrderRequest.Country;
-            //shipingAddress.FirstName = transactionRequest.createOrderRequest.FirstName;
-            //shipingAddress.LastName = transactionRequest.createOrderRequest.LastName;
-            //shipingAddress.Phone = transactionRequest.createOrderRequest.Phone;
-            //var shippingAddress = new ShippingAddress(address, shipingAddress, transactionRequest.createOrderRequest.Phone);
-            //var orderList = new List<OrderDetailRequest>();
-
-
-
-            // var willCallAddress = transactionRequest.createOrderRequest.ShipMethodID == 9 ? shippingAddress : shippingAddress;
-            //var details = new List<ApiRequest>();
-            //var orderItems = items;                   //.Where(c => c.Type == ShoppingCartItemType.Order);
-            //var hasOrder = orderItems.Count() > 0;
-            //var autoOrderItems = items;              //ShoppingCart.Items.Where(c => c.Type == ShoppingCartItemType.AutoOrder);
-
-            //var makePostTransactionPointPayment = false;
-            ////var pointAccount = new CustomerPointAccount();
-            //var pointPaymentAmount = 0m;
-            //var hasAutoOrder = orderItems.Count() > 0;
-
-            //if (hasOrder)
-            //{
-            //    var orderRequest=new CreateOrderRequest();
-            //var orderRequest = new CreateOrderRequest(OrderConfiguration, PropertyBag.ShipMethodID, orderItems, willCallAddress)
-            //{
-            //    CustomerID = Identity.Customer.CustomerID,
-            //    Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
-            //};
-            //if (items.Coupon != null && items.Coupon.Code.IsNotNullOrEmpty())
-            //{
-            //    orderRequest.Other16 = items.Coupon.Code;
-            //}
-            //if (items.ContainsSpecial)
-            //{
-            //    orderRequest.Other18 = "true";
-            //}
-            //details.Add(orderRequest);
-
-            //}
-            //if (hasAutoOrder)
-            //{
-            //var autoOrderRequest = new CreateAutoOrderRequest(AutoOrderConfiguration, DAL.GetAutoOrderPaymentType(PropertyBag.PaymentMethod), PropertyBag.AutoOrderStartDate, 8, autoOrderItems, PropertyBag.ShippingAddress)
-            //{
-            //    CustomerID = Identity.Customer.CustomerID,
-            //    Frequency = PropertyBag.AutoOrderFrequencyType
-            //};
-
-            //var autoOrderRequest = new CreateAutoOrderRequest();
-            //var autoOrderRequest = new CreateAutoOrderRequest()
-            //{
-            //    CustomerID = items.CustomerID,
-            //    Frequency = items.AutoOrderFrequencyType
-            //};
-
-            //var items1 = _shoppingService.GetItems(new GetItemsRequest
-            //{
-            //   // Configuration = AutoOrderConfiguration,
-            //    ItemCodes = autoOrderRequest.Details.Select(i => i.ItemCode).ToArray(),
-            //}).tolist();
-
-            //      foreach (var itm in autoOrderRequest.Details)
-            //      {
-            //          itm.PriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-            //          itm.TaxableEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-            //          itm.ShippingPriceEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.Price).FirstOrDefault();
-            //          itm.BusinessVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.BV).FirstOrDefault();
-            //          itm.CommissionableVolumeEachOverride = items1.Where(y => y.ItemCode == itm.ItemCode).Select(y => y.CV).FirstOrDefault();
-            //      }
-            //      details.Add(autoOrderRequest);
-            //      if (items.CustomerTypeID == CustomerTypes.RetailCustomer)
-            //      {
-
-            //          var updateCustomerRequest = new UpdateCustomerRequest
-            //          {
-            //              CustomerID = items.CustomerID,
-            //              CustomerType = CustomerTypes.PreferredCustomer,
-            //              Field1 = hasAutoOrder ? "1" : ""
-            //          };
-            //          details.Add(updateCustomerRequest);
-            //      }
-
-            //  }
-            //  var remainder = 0m;
-
-            //  #region Point Account Validation Logic
-            //if(Items.UsePointsAsPayment)
-            //  {
-            //      var orderCalcRequest = new OrderCalculationRequest
-            //      {
-            //          Configuration = OrderConfiguration,
-            //          Items = orderItems,
-            //          Address = PropertyBag.ShippingAddress,
-            //          ShipMethodID = PropertyBag.ShipMethodID,
-            //          CustomerID = Identity.Customer.CustomerID,
-            //          Other17 = PropertyBag.QuantityOfPointsToUse.ToString() // Points
-            //      };
-            //  }
-            // #endregion
-
-
-
-
-            //var orderItems = orderList.
-            return Ok(_shoppingService.SubmitCheckout(transactionRequest));
+            return Ok(_shoppingService.SubmitCheckout(transactionRequests));
         }
+
+
+
+
 
 
 
@@ -384,9 +282,13 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetCustomerAddress(CustomerID));
         }
 
-        [HttpPost("AddUpdateCustomerAddress")]
-        public IActionResult AddUpdateCustomerAddress(int CustomerID, Address address)
+        [HttpPost("AddUpdateCustomerAddress/{CustomerID:int}")]
+        public IActionResult AddUpdateCustomerAddress(int CustomerID, ShippingAddress address)
         {
+            //if ( Address.AddressType == AddressType.New)
+            //{
+            //    DAL.SetCustomerAddressOnFile(Identity.Customer.CustomerID, address as Address);
+            //}
             return Ok(_shoppingService.AddUpdateCustomerAddress(CustomerID, address));
 
         }

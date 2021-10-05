@@ -48,4 +48,3 @@ D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\es-US\
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\ref\WinkNatural.Common.dll
 D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.pdb
-D:\Wink Naturals 18-08-2021\st-dotnet\WinkNatural.Common\obj\Debug\net5.0\WinkNatural.Common.csproj.AssemblyReference.cache

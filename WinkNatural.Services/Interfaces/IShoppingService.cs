@@ -41,7 +41,7 @@ namespace WinkNatural.Services.Interfaces
         Task<RefundPriorCreditCardChargeResponse> RefundPriorCreditCardCharge(RefundPriorCreditCardChargeRequest refundPriorCredit);
         Task<VerifyAddressResponse> Shipping(VerifyAddressRequest addressRequest);
         Task<List<Address>> GetCustomerAddress(int customerID);
-        Task<Address> AddUpdateCustomerAddress(int customerID, Address address);
+        Task<ShippingAddress> AddUpdateCustomerAddress(int customerID, ShippingAddress address);
         Task<GetWarehousesResponse> GetWarehouses(GetWarehousesRequest warehousesRequest);
         Task<GetOrdersResponse> GetOrder(GetOrdersRequest ordersRequest);
         List<ShopProductsResponse> SearchProducts(string query);
