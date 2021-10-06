@@ -1594,7 +1594,14 @@ namespace WinkNatural.Services.Services
                     languageID = 0,
                     priceTypeID = 1
                 }).ToList();
-                return response[0];
+                if (response.Count > 0)
+                {
+                    return response[0];
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
