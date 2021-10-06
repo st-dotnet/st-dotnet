@@ -14,12 +14,20 @@ using System.Threading.Tasks;
 using Exigo.Api.Client;
 using WinkNatural.Services.DTO;
 using WinkNatural.Common.Utils;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace WinkNatural.Services.Services
 {
     public class ShoppingService : IShoppingService
     {
         private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
+        private IMemoryCache _cache;
+        #region constructor
+        public ShoppingService(IMemoryCache memoryCache)
+        {
+            _cache = memoryCache;
+        }
+        #endregion
         /// <summary>
         /// GetItemCategory
         /// </summary>
@@ -2046,16 +2054,25 @@ namespace WinkNatural.Services.Services
                     Code = promoCode
                 }).FirstOrDefault();
 
-                // return coupon;
-                if (coupon == null)
+                // Get Customer type from MemoryCache
+                int customerType = _cache.Get<int>("CustomerType");
+                if (coupon != null)
                 {
-                    return new PromoCode { ErrorMessage = "Oops. Coupon code " + promoCode + " is not valid." };
+                    if (!string.IsNullOrEmpty(coupon.CustomerTypes))
+                    {
+                        var customerTypes = coupon.CustomerTypes.Split(',').ToArray();
+
+                        if (!customerTypes.Contains(customerType.ToString()))
+                        {
+                            return new PromoCode { ErrorMessage = "Oops. Coupon code " + promoCode + " is not valid for this user." };
+                        }
+                    }
                 }
                 else
                 {
-                    return coupon;
+                    return new PromoCode { ErrorMessage = "Oops. Coupon code " + promoCode + " is not valid." };
                 }
-                
+                return coupon;
             }
         }
     }

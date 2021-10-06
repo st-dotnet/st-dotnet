@@ -1,4 +1,5 @@
 ﻿using Exigo.Api.Client;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -19,13 +20,14 @@ namespace WinkNatural.Services.Services
         private readonly ExigoApiClient exigoApiClient = new ExigoApiClient(ExigoConfig.Instance.CompanyKey, ExigoConfig.Instance.LoginName, ExigoConfig.Instance.Password);
         private readonly IConfiguration _config;
         private readonly ICustomerService _customerService;
-
+        private readonly IMemoryCache _cache;
         #region constructor
 
-        public AuthenticateService(IConfiguration config, ICustomerService customerService)
+        public AuthenticateService(IConfiguration config, ICustomerService customerService, IMemoryCache memoryCache)
         {
             _config = config;
             _customerService = customerService;
+            _cache = memoryCache;
         }
 
         #endregion
@@ -69,7 +71,15 @@ namespace WinkNatural.Services.Services
 
                 // Get customer
                 var customer = await _customerService.GetCustomer(result.CustomerID);
-
+                // Save Customer data in MemoryCache.
+                _cache.Set("CustomerType", customer.Customers[0].CustomerType, TimeSpan.FromSeconds(600));
+                _cache.Set("CustomerId", customer.Customers[0].CustomerID);
+                _cache.Set("CustomerEmail", customer.Customers[0].Email);
+                _cache.Set("LoginName", customer.Customers[0].LoginName);
+                _cache.Set("Phone", customer.Customers[0].Phone);
+                _cache.Set("FirstName", customer.Customers[0].FirstName);
+                _cache.Set("LastName", customer.Customers[0].LastName);
+                _cache.Set("Address", customer.Customers[0].MainAddress1);
                 var token = GenerateJwtToken(result);
                 return new CustomerCreateResponse
                 {

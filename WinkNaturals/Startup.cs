@@ -36,7 +36,7 @@ namespace WinkNatural.Web.WinkNaturals
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
+            services.AddMemoryCache();
             services.AddScoped<IAuthenticateService, AuthenticateService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IHomeService, HomeService>();
