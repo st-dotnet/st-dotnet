@@ -1426,7 +1426,7 @@ namespace WinkNatural.Services.Services
 
 
        
-        public async Task<List<Address>> GetCustomerAddress(int customerID)
+        public  List<Address> GetCustomerAddress(int customerID)
         {
             // Address address = new Address();
             // address = DAL.GetCustomerAddresses(Identity.Customer.CustomerID)
@@ -1437,7 +1437,7 @@ namespace WinkNatural.Services.Services
                 var addresses = new List<Address>();
                 try
                 {
-                    var model = await context.Query(@"
+                    var model =  context.Query(@"
                             select 
                                 c.FirstName,
                                 c.LastName,
@@ -1515,9 +1515,9 @@ namespace WinkNatural.Services.Services
                     });
 
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    ex.Message.ToString();
                 }
                 return addresses;
 

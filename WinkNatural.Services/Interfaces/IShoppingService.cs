@@ -40,7 +40,7 @@ namespace WinkNatural.Services.Interfaces
         Task<ChargeGroupOrderCreditCardTokenResponse> ChargeGroupOrderCreditCardToken(ChargeGroupOrderCreditCardTokenRequest chargeGroupOrderCredit);
         Task<RefundPriorCreditCardChargeResponse> RefundPriorCreditCardCharge(RefundPriorCreditCardChargeRequest refundPriorCredit);
         Task<VerifyAddressResponse> Shipping(VerifyAddressRequest addressRequest);
-        Task<List<Address>> GetCustomerAddress(int customerID);
+        List<Address> GetCustomerAddress(int customerID);
         Task<Address> AddUpdateCustomerAddress(int customerID, Address address);
         Task<GetWarehousesResponse> GetWarehouses(GetWarehousesRequest warehousesRequest);
         Task<GetOrdersResponse> GetOrder(GetOrdersRequest ordersRequest);
