@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using WinkNatural.Common;
 using WinkNatural.Services.DTO;
-using static WinkNatural.Services.DTO.Shopping.CreditCard;
-using WinkNatural.Services.ExigoServices;
 using WinkNatural.Common.Utils;
 
 namespace WinkNaturals.Controllers
