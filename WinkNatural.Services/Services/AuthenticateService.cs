@@ -8,7 +8,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WinkNatural.Common.Utils;
-using WinkNatural.Common.Utils.Enum;
 using WinkNatural.Services.DTO.Customer;
 using WinkNatural.Services.Interfaces;
 
@@ -105,8 +104,11 @@ namespace WinkNatural.Services.Services
         {
             try
             {
+                if(string.IsNullOrEmpty(request.LoginName)) return new CustomerUpdateResponse { Success = false, ErrorMessage = "Please enter Login name!" };
+                if(request.CustomerId==0) return new CustomerUpdateResponse { Success = false, ErrorMessage = "Some issues occurred during updating the customer!" };
                 //Customer update password request
-                var customerUpdateRequest = new UpdateCustomerRequest { CustomerID = request.CustomerId, LoginPassword = request.NewPassword };
+                var customerUpdateRequest = new UpdateCustomerRequest { CustomerID = request.CustomerId, LoginPassword = request.NewPassword
+                ,LoginName=request.LoginName };
                 var result = await exigoApiClient.UpdateCustomerAsync(customerUpdateRequest);
                 return new CustomerUpdateResponse { Success = true };
             }
