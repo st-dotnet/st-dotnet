@@ -11,5 +11,7 @@ namespace WinkNatural.Services.Interfaces
     public interface IPaymentService
     {
         BankCardTransaction ProcessPayment(WinkPaymentRequest winkPaymentRequest);
+
+       
     }
 }

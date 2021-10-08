@@ -1,10 +1,10 @@
-﻿using AutoMapper;
-using Exigo.Api.Client;
+﻿using Exigo.Api.Client;
 using System;
 using WinkNatural.Common.Utils.Enum;
 using WinkNatural.Services.DTO;
 using WinkNatural.Services.DTO.Customer;
 using WinkNaturals.Models;
+using Profile = AutoMapper.Profile;
 
 namespace WinkNaturals.Helpers
 {

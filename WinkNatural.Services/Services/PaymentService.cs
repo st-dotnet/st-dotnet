@@ -10,6 +10,8 @@ namespace WinkNatural.Services.Services
 {
     public class PaymentService : IPaymentService
     {
+       
+
         public BankCardTransaction ProcessPayment(WinkPaymentRequest winkPaymentRequest)
         {
             BankCardTransaction bcx = new BankCardTransaction();
@@ -25,5 +27,6 @@ namespace WinkNatural.Services.Services
             bcx = bcClient.processBankCardTransaction(bcx);
             return bcx;
         }
+       
     }
 }
