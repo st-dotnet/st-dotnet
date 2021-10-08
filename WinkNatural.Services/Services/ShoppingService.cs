@@ -1,20 +1,16 @@
 ﻿using Dapper;
+using Exigo.Api.Client;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using WinkNatural.Common.Utils;
 using WinkNatural.Services.DTO.Shopping;
 using WinkNatural.Services.Interfaces;
-using WinkNaturals.Models;
-using Microsoft.AspNetCore.Mvc;
 using WinkNatural.Services.Utilities;
-using System.IO;
-using System.Threading.Tasks;
-
-
-using Exigo.Api.Client;
-using WinkNatural.Services.DTO;
-using WinkNatural.Common.Utils;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace WinkNatural.Services.Services
 {
@@ -399,7 +395,7 @@ namespace WinkNatural.Services.Services
                 //Add Details
 
                 var details = new List<Exigo.Api.Client.OrderDetailRequest>();
-                if(request.Details.Count()>0)
+                if (request.Details.Count() > 0)
                 {
                     foreach (var item in request.Details)
                     {
@@ -409,7 +405,7 @@ namespace WinkNatural.Services.Services
                         details.Add(detail);
                     }
                 }
-                
+
                 //Now attach the list to the request
 
                 req.Details = details.ToArray();
@@ -586,7 +582,7 @@ namespace WinkNatural.Services.Services
                 //Add Details
 
                 var details = new List<OrderDetailRequest>();
-                if(orderRequest.Details.Count()>0)
+                if (orderRequest.Details.Count() > 0)
                 {
                     foreach (var item in orderRequest.Details)
                     {
@@ -597,7 +593,7 @@ namespace WinkNatural.Services.Services
                         details.Add(detail);
                     }
                 }
-                
+
 
                 //var detail1 = new OrderDetailRequest();
 
@@ -702,7 +698,7 @@ namespace WinkNatural.Services.Services
                 req.OrderType = createOrderImport.OrderType;
 
                 var orderDetails = new List<OrderImportDetail>();
-                if (createOrderImport.OrderDetails.Count()>0)
+                if (createOrderImport.OrderDetails.Count() > 0)
                 {
                     foreach (var item in createOrderImport.OrderDetails)
                     {
@@ -931,7 +927,7 @@ namespace WinkNatural.Services.Services
                 req.OrderStatus = changeOrderStatusBatchRequest.OrderStatus;
 
                 var details = new List<OrderBatchDetailRequest>();
-                if(changeOrderStatusBatchRequest.Details.Count()>0)
+                if (changeOrderStatusBatchRequest.Details.Count() > 0)
                 {
                     foreach (var item in changeOrderStatusBatchRequest.Details)
                     {
@@ -976,7 +972,7 @@ namespace WinkNatural.Services.Services
                 req.OrderKey = createPaymentRequest.OrderKey;
                 //Send Request to Server and Get Response
                 res = await exigoApiClient.CreatePaymentAsync(req);
-               
+
             }
             catch (Exception e)
             {
@@ -1367,9 +1363,9 @@ namespace WinkNatural.Services.Services
             return verifyAddressResponse;
         }
 
-      
+
         // Controller Action Method to Add or Update the Customer Address
-        public async Task<Address> AddUpdateCustomerAddress(int customerID,Address address)
+        public async Task<Address> AddUpdateCustomerAddress(int customerID, Address address)
         {
             var type = address.AddressType;
             var saveAddress = false;
@@ -1425,7 +1421,7 @@ namespace WinkNatural.Services.Services
 
             if (saveAddress)
             {
-               await exigoApiClient.UpdateCustomerAsync(request);
+                await exigoApiClient.UpdateCustomerAsync(request);
             }
 
             return address;
@@ -1433,19 +1429,19 @@ namespace WinkNatural.Services.Services
 
 
 
-       
-        public  List<Address> GetCustomerAddress(int customerID)
+
+        public List<Address> GetCustomerAddress(int customerID)
         {
             // Address address = new Address();
             // address = DAL.GetCustomerAddresses(Identity.Customer.CustomerID)
             //.Where(c => c.IsComplete)
             //.Select(c => c as ShippingAddress);
-            using (var context =  Common.Utils.DbConnection.Sql())
+            using (var context = Common.Utils.DbConnection.Sql())
             {
                 var addresses = new List<Address>();
                 try
                 {
-                    var model =  context.Query(@"
+                    var model = context.Query(@"
                             select 
                                 c.FirstName,
                                 c.LastName,
@@ -1523,7 +1519,7 @@ namespace WinkNatural.Services.Services
                     });
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ex.Message.ToString();
                 }
@@ -1563,16 +1559,16 @@ namespace WinkNatural.Services.Services
 
             //req.CustomerID = 1;             //Unique numeric identifier for customer record.
             //req.OrderID = 1;                //Unique numeric identifier for order record.
-           // req.OrderDateStart = DateTime.Today;         //If supplied only orders greater than or equal to will be returned.
+            // req.OrderDateStart = DateTime.Today;         //If supplied only orders greater than or equal to will be returned.
             //req.OrderDateEnd = DateTime.Today;
-           // req.WarehouseID = 1;            //Unique location for orders
+            // req.WarehouseID = 1;            //Unique location for orders
             req.CurrencyCode = "usd";
-           // req.CustomerKey = "1";          //Unique alpha numeric identifier for customer record. Exeption will occur if CustomerID & CustomerKey are provided.
-           // req.OrderKey = "1";             //Unique alpha numeric identifier for order record. Exeption will occur if OrderID & OrderKey are provided.
+            // req.CustomerKey = "1";          //Unique alpha numeric identifier for customer record. Exeption will occur if CustomerID & CustomerKey are provided.
+            // req.OrderKey = "1";             //Unique alpha numeric identifier for order record. Exeption will occur if OrderID & OrderKey are provided.
             //Send Request to Server and Get Response
 
             var res = await exigoApiClient.GetOrdersAsync(req);
-            
+
             return res;
         }
 
@@ -1594,18 +1590,11 @@ namespace WinkNatural.Services.Services
                     languageID = 0,
                     priceTypeID = 1
                 }).ToList();
-                if (response.Count > 0)
-                {
-                    return response[0];
-                }
-                else
-                {
-                    return null;
-                }
+                return response[0];
             }
         }
 
-       
+
         #region Private methods
 
         public static List<ItemCategoryResponse> GetWebCategoriesRecursively(int webCategoryID)
@@ -2081,6 +2070,361 @@ namespace WinkNatural.Services.Services
                 }
                 return coupon;
             }
+        }
+        /// <summary>
+        /// Create Item
+        /// </summary>
+        /// <param name="createItemRequest"></param>
+        /// <returns></returns>
+        public async Task<CreateItemResponse> CreateItem(CreateItemRequest createItemRequest)
+        {
+            var res = new CreateItemResponse();
+            try
+            {
+                // Create request
+                var req = new CreateItemRequest();
+
+                req.ItemCode = createItemRequest.ItemCode;
+                req.Description = createItemRequest.Description;
+                req.Weight = createItemRequest.Weight;
+                req.Notes = createItemRequest.Notes;
+                req.AvailableInAllCountryRegions = createItemRequest.AvailableInAllCountryRegions;
+                req.TaxedInAllCountryRegions = createItemRequest.TaxedInAllCountryRegions;
+                req.AvailableInAllWarehouses = createItemRequest.AvailableInAllWarehouses;
+                req.IsVirtual = createItemRequest.IsVirtual;
+                req.ItemTypeID = createItemRequest.ItemTypeID;
+                req.IsSubscriptionUpdate = createItemRequest.IsSubscriptionUpdate;
+                req.IsPointIncrement = createItemRequest.IsPointIncrement;
+                req.OtherCheck1 = createItemRequest.OtherCheck1;
+                req.OtherCheck2 = createItemRequest.OtherCheck2;
+                req.OtherCheck3 = createItemRequest.OtherCheck3;
+                req.OtherCheck4 = createItemRequest.OtherCheck4;
+                req.OtherCheck5 = createItemRequest.OtherCheck5;
+                req.Field1 = createItemRequest.Field1;
+                req.Field2 = createItemRequest.Field2;
+                req.Field3 = createItemRequest.Field3;
+                req.Field4 = createItemRequest.Field4;
+                req.Field5 = createItemRequest.Field5;
+                req.Field6 = createItemRequest.Field6;
+                req.Field7 = createItemRequest.Field7;
+                req.Field8 = createItemRequest.Field8;
+                req.Field9 = createItemRequest.Field9;
+                req.Field10 = createItemRequest.Field10;
+                req.HideFromSearch = createItemRequest.HideFromSearch;
+
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.CreateItemAsync(req);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+        /// <summary>
+        /// Update Item
+        /// </summary>
+        /// <param name="updateItemRequest"></param>
+        /// <returns></returns>
+        public async Task<UpdateItemResponse> UpdateItem(UpdateItemRequest updateItemRequest)
+        {
+            var res = new UpdateItemResponse();
+            try
+
+            {
+                //Create Request
+                var req = new UpdateItemRequest();
+
+                req.ItemCode = updateItemRequest.ItemCode;
+                req.Description = updateItemRequest.Description;
+                req.Weight = updateItemRequest.Weight;
+                req.Notes = updateItemRequest.Notes;
+                req.AvailableInAllCountryRegions = updateItemRequest.AvailableInAllCountryRegions;
+                req.TaxedInAllCountryRegions = updateItemRequest.TaxedInAllCountryRegions;
+                req.AvailableInAllWarehouses = updateItemRequest.AvailableInAllWarehouses;
+                req.IsVirtual = updateItemRequest.IsVirtual;
+                req.ItemTypeID = updateItemRequest.ItemTypeID;
+                req.ShortDetail = updateItemRequest.ShortDetail;
+                req.ShortDetail2 = updateItemRequest.ShortDetail2;
+                req.ShortDetail3 = updateItemRequest.ShortDetail3;
+                req.ShortDetail4 = updateItemRequest.ShortDetail4;
+                req.LongDetail = updateItemRequest.LongDetail;
+                req.LongDetail2 = updateItemRequest.LongDetail2;
+                req.LongDetail3 = updateItemRequest.LongDetail3;
+                req.LongDetail4 = updateItemRequest.LongDetail4;
+                req.OtherCheck1 = updateItemRequest.OtherCheck1;
+                req.OtherCheck2 = updateItemRequest.OtherCheck2;
+                req.OtherCheck3 = updateItemRequest.OtherCheck3;
+                req.OtherCheck4 = updateItemRequest.OtherCheck4;
+                req.OtherCheck5 = updateItemRequest.OtherCheck5;
+                req.Field1 = updateItemRequest.Field1;
+                req.Field2 = updateItemRequest.Field2;
+                req.Field3 = updateItemRequest.Field3;
+                req.Field4 = updateItemRequest.Field4;
+                req.Field5 = updateItemRequest.Field5;
+                req.Field6 = updateItemRequest.Field6;
+                req.Field7 = updateItemRequest.Field7;
+                req.Field8 = updateItemRequest.Field8;
+                req.Field9 = updateItemRequest.Field9;
+                req.Field10 = updateItemRequest.Field10;
+                req.HideFromSearch = updateItemRequest.HideFromSearch;
+                req.IsSubscriptionUpdate = updateItemRequest.IsSubscriptionUpdate;
+                req.IsPointIncrement = updateItemRequest.IsPointIncrement;
+
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.UpdateItemAsync(req);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// Set Item Price
+        /// </summary>
+        /// <param name="setItemPriceRequest"></param>
+        /// <returns></returns>
+        public async Task<SetItemPriceResponse> SetItemPrice(SetItemPriceRequest setItemPriceRequest)
+        {
+            var res = new SetItemPriceResponse();
+            try
+            {
+                // Create request
+                var req = new SetItemPriceRequest();
+                req.ItemCode = setItemPriceRequest.ItemCode;
+                req.CurrencyCode = setItemPriceRequest.CurrencyCode;
+                req.PriceType = setItemPriceRequest.PriceType;              //Controls which price band to use
+                req.Price = setItemPriceRequest.Price;                  //Price amount
+                req.BusinessVolume = setItemPriceRequest.BusinessVolume;         //Price amount
+                req.CommissionableVolume = setItemPriceRequest.CommissionableVolume;   //Price amount
+                req.TaxablePrice = setItemPriceRequest.TaxablePrice;           //Price amount
+                req.ShippingPrice = setItemPriceRequest.ShippingPrice;          //Price amount
+                req.Other1Price = setItemPriceRequest.Other1Price;            //Price amount
+                req.Other2Price = setItemPriceRequest.Other2Price;            //Price amount
+                req.Other3Price = setItemPriceRequest.Other3Price;            //Price amount
+                req.Other4Price = setItemPriceRequest.Other4Price;            //Price amount
+                req.Other5Price = setItemPriceRequest.Other5Price;            //Price amount
+                req.Other6Price = setItemPriceRequest.Other6Price;            //Price amount
+                req.Other7Price = setItemPriceRequest.Other7Price;            //Price amount
+                req.Other8Price = setItemPriceRequest.Other8Price;            //Price amount
+                req.Other9Price = setItemPriceRequest.Other9Price;            //Price amount
+                req.Other10Price = setItemPriceRequest.Other10Price;           //Price amount
+
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.SetItemPriceAsync(req);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// Set Item Warehouse
+        /// </summary>
+        /// <param name="setItemWarehouseRequest"></param>
+        /// <returns></returns>
+        public async Task<SetItemWarehouseResponse> SetItemWarehouse(SetItemWarehouseRequest setItemWarehouseRequest)
+        {
+            var res = new SetItemWarehouseResponse();
+            try
+            {
+                //Create Request
+                var req = new SetItemWarehouseRequest();
+                req.AllowedUserWarehouses = setItemWarehouseRequest.AllowedUserWarehouses;
+                req.AllowedWarehouseManagementTypes = setItemWarehouseRequest.AllowedWarehouseManagementTypes;
+                req.ItemCode = setItemWarehouseRequest.ItemCode;
+                req.WarehouseID = setItemWarehouseRequest.WarehouseID;            //Unique location for orders
+                req.IsAvailable = setItemWarehouseRequest.IsAvailable;
+                req.ItemManageTypeID = setItemWarehouseRequest.ItemManageTypeID;       //Item management type
+
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.SetItemWarehouseAsync(req);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// Set Item Country Region
+        /// </summary>
+        /// <param name="setItemCountryRegionRequest"></param>
+        /// <returns></returns>
+        public async Task<SetItemCountryRegionResponse> SetItemCountryRegion(SetItemCountryRegionRequest setItemCountryRegionRequest)
+        {
+            var res = new SetItemCountryRegionResponse();
+            try
+            {
+                //Create Request
+                var req = new SetItemCountryRegionRequest();
+                req.ItemCode = setItemCountryRegionRequest.ItemCode;
+                req.CountryCode = setItemCountryRegionRequest.CountryCode;
+                req.RegionCode = setItemCountryRegionRequest.RegionCode;
+                req.Taxed = setItemCountryRegionRequest.Taxed;
+                req.TaxedFed = setItemCountryRegionRequest.TaxedFed;
+                req.TaxedState = setItemCountryRegionRequest.TaxedState;
+                req.UseTaxOverride = setItemCountryRegionRequest.UseTaxOverride;
+                req.TaxOverridePct = setItemCountryRegionRequest.TaxOverridePct;
+                req.BulkUpdate = setItemCountryRegionRequest.BulkUpdate;
+
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.SetItemCountryRegionAsync(req);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// Create Web Category
+        /// </summary>
+        /// <param name="createWebCategoryRequest"></param>
+        public async Task<CreateWebCategoryResponse> CreateWebCategory(CreateWebCategoryRequest createWebCategoryRequest)
+        {
+            var res = new CreateWebCategoryResponse();
+            try
+            {
+                var req = new CreateWebCategoryRequest();
+                req.WebID = createWebCategoryRequest.WebID;                  //WebID used in content engine
+                req.ParentID = createWebCategoryRequest.ParentID;               //Parent category ID (use 0 for the root)
+                req.Description = createWebCategoryRequest.Description;
+
+                // Send Request to Server and Get Response
+                res = await exigoApiClient.CreateWebCategoryAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// To Update Web Category
+        /// </summary>
+        /// <param name="updateWebCategoryRequest"></param>
+        public async Task<UpdateWebCategoryResponse> UpdateWebCategory(UpdateWebCategoryRequest updateWebCategoryRequest)
+        {
+            var res = new UpdateWebCategoryResponse();
+            try
+            {
+                var req = new UpdateWebCategoryRequest();
+                req.WebID = updateWebCategoryRequest.WebID;                  //WebID used in content engine
+                req.CategoryID = updateWebCategoryRequest.CategoryID;
+                req.Description = updateWebCategoryRequest.Description;          //Maximum length is 50
+                
+                //Send Request to Server and Get Response
+                res = await exigoApiClient.UpdateWebCategoryAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// To Delete Web Category
+        /// </summary>
+        /// <param name="deleteWebCategoryRequest"></param>
+        public async Task<DeleteWebCategoryResponse> DeleteWebCategory(DeleteWebCategoryRequest deleteWebCategoryRequest)
+        {
+            var res = new DeleteWebCategoryResponse();
+            try
+            {
+                var req = new DeleteWebCategoryRequest();
+                req.WebID = deleteWebCategoryRequest.WebID;                  //WebID used in content engine
+                req.CategoryID = deleteWebCategoryRequest.CategoryID;
+
+                // Send Request to Server and Get Response
+                res = await exigoApiClient.DeleteWebCategoryAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// To Adjust Inventory
+        /// </summary>
+        /// <param name="adjustInventoryRequest"></param>
+        public async Task<AdjustInventoryResponse> AdjustInventory(AdjustInventoryRequest adjustInventoryRequest)
+        {
+            var res = new AdjustInventoryResponse();
+            try
+            {
+                var req = new AdjustInventoryRequest();
+                req.WarehouseID = adjustInventoryRequest.WarehouseID;            //Unique location for orders
+                req.ItemCode = adjustInventoryRequest.ItemCode;
+                req.Quantity = adjustInventoryRequest.Quantity;
+                req.Notes = adjustInventoryRequest.Notes;
+
+                // Send Request to Server and Get Response
+                res = await exigoApiClient.AdjustInventoryAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// To Set Item Subscription
+        /// </summary>
+        /// <param name="setItemSubscriptionRequest"></param>
+        public async Task<SetItemSubscriptionResponse> SetItemSubscription(SetItemSubscriptionRequest setItemSubscriptionRequest)
+        {
+            var res = new SetItemSubscriptionResponse();
+            try
+            {
+                var req = new SetItemSubscriptionRequest();
+                req.ItemID = setItemSubscriptionRequest.ItemID;
+                req.ItemCode = setItemSubscriptionRequest.ItemCode;
+                req.Subscriptions = setItemSubscriptionRequest.Subscriptions;
+
+                // Send Request to Server and Get Response
+                res = await exigoApiClient.SetItemSubscriptionAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// To Set Item Point Account
+        /// </summary>
+        /// <param name="setItemPointAccountRequest"></param>
+        public async Task<SetItemPointAccountResponse> SetItemPointAccount(SetItemPointAccountRequest setItemPointAccountRequest)
+        {
+            var res = new SetItemPointAccountResponse();
+            try
+            {
+                var req = new SetItemPointAccountRequest();
+                req.ItemID = setItemPointAccountRequest.ItemID;
+                req.ItemCode = setItemPointAccountRequest.ItemCode;
+                req.PointAccounts = setItemPointAccountRequest.PointAccounts;
+
+                // Send Request to Server and Get Response
+                res = await exigoApiClient.SetItemPointAccountAsync(req);
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
+            }
+            return res;
         }
     }
 }

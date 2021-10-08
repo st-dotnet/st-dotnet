@@ -336,9 +336,104 @@ namespace WinkNaturals.Controllers
             return Ok(_shoppingService.GetPromoDetail(promoCode));
         }
 
+        /// <summary>
+        /// To Create Item
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("CreateItem")]
+        public IActionResult CreateItem(CreateItemRequest createItemRequest)
+        {
+            return Ok(_shoppingService.CreateItem(createItemRequest));
+        }
 
+        /// <summary>
+        /// To Update Item
+        /// </summary>
+        /// <returns></returns>
 
+        [HttpPost("UpdateItem")]
+        public IActionResult UpdateItem(UpdateItemRequest updateItemRequest)
+        {
+            return Ok(_shoppingService.UpdateItem(updateItemRequest));
+        }
 
+        /// <summary>
+        /// To Set Item Price
+        /// </summary>
+        /// <returns></returns>
 
+        [HttpPost("SetItemPrice")]
+        public IActionResult SetItemPrice(SetItemPriceRequest setItemPriceRequest)
+        {
+            return Ok(_shoppingService.SetItemPrice(setItemPriceRequest));
+        }
+
+        /// <summary>
+        /// To Set Item Warehouse
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("SetItemWarehouse")]
+        public IActionResult SetItemWarehouse(SetItemWarehouseRequest setItemWarehouseRequest)
+        {
+            return Ok(_shoppingService.SetItemWarehouse(setItemWarehouseRequest));
+        }
+
+        /// <summary>
+        /// To Set Item CountryRegion
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("SetItemCountryRegion")]
+        public IActionResult SetItemCountryRegion(SetItemCountryRegionRequest setItemWarehouseRequest)
+        {
+            return Ok(_shoppingService.SetItemCountryRegion(setItemWarehouseRequest));
+        }
+
+        /// <summary>
+        /// To Create WebCategory
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("CreateWebCategory")]
+        public IActionResult CreateWebCategory(CreateWebCategoryRequest createWebCategoryRequest)
+        {
+            return Ok(_shoppingService.CreateWebCategory(createWebCategoryRequest));
+        }
+
+        /// <summary>
+        /// To Update WebCategory
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("UpdateWebCategory")]
+        public IActionResult UpdateWebCategory(UpdateWebCategoryRequest updateWebCategoryRequest)
+        {
+            return Ok(_shoppingService.UpdateWebCategory(updateWebCategoryRequest));
+        }
+
+       // To Delete WebCategory
+       [HttpPost("DeleteWebCategory")]
+       public IActionResult DeleteWebCategory(DeleteWebCategoryRequest deleteWebCategoryRequest)
+        {
+            return Ok(_shoppingService.DeleteWebCategory(deleteWebCategoryRequest));
+        }
+
+        // To adjust inventory
+        [HttpPost("AdjustInventory")]
+        public IActionResult AdjustInventory(AdjustInventoryRequest adjustInventoryRequest)
+        {
+            return Ok(_shoppingService.AdjustInventory(adjustInventoryRequest));
+        }
+
+        // To set Item subscription
+        [HttpPost("SetItemSubscription")]
+        public IActionResult SetItemSubscription(SetItemSubscriptionRequest setItemSubscriptionRequest)
+        {
+            return Ok(_shoppingService.SetItemSubscription(setItemSubscriptionRequest));
+        }
+
+        // To Set Item Point Account
+        [HttpPost("SetItemPointAccount")]
+        public IActionResult SetItemPointAccount(SetItemPointAccountRequest setItemPointAccountRequest)
+        {
+            return Ok(_shoppingService.SetItemPointAccount(setItemPointAccountRequest));
+        }
     }
 }

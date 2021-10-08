@@ -55,5 +55,20 @@ namespace WinkNatural.Services.Interfaces
         Task<GetCustomersResponse> GetCustomerRealTime(int customerID);
 
         Task<UpdateCustomerResponse> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest);
+
+        // To create item
+        Task<CreateItemResponse> CreateItem(CreateItemRequest createItemRequest);
+
+        Task<UpdateItemResponse> UpdateItem(UpdateItemRequest updateItemRequest);
+        Task<SetItemPriceResponse> SetItemPrice(SetItemPriceRequest setItemPriceRequest);
+        Task<SetItemWarehouseResponse> SetItemWarehouse(SetItemWarehouseRequest setItemWarehouseRequest);
+        Task<SetItemCountryRegionResponse> SetItemCountryRegion(SetItemCountryRegionRequest setItemCountryRegionRequest);
+        Task<CreateWebCategoryResponse> CreateWebCategory(CreateWebCategoryRequest createWebCategoryRequest);
+        Task<UpdateWebCategoryResponse> UpdateWebCategory(UpdateWebCategoryRequest updateWebCategoryRequest);
+        Task<DeleteWebCategoryResponse> DeleteWebCategory(DeleteWebCategoryRequest deleteWebCategoryRequest);
+        Task<AdjustInventoryResponse> AdjustInventory(AdjustInventoryRequest adjustInventoryRequest);
+        Task<SetItemSubscriptionResponse> SetItemSubscription(SetItemSubscriptionRequest setItemSubscriptionRequest);
+        Task<SetItemPointAccountResponse> SetItemPointAccount(SetItemPointAccountRequest setItemPointAccountRequest);
+
     }
 }

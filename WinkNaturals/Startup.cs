@@ -43,6 +43,7 @@ namespace WinkNatural.Web.WinkNaturals
             services.AddScoped<IEnrollmentService, EnrollmentService>();
             services.AddScoped<IShoppingService, ShoppingService>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPartyService, PartyService>();
 
             services.AddControllers();
 
