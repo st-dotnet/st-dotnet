@@ -104,11 +104,23 @@ namespace WinkNatural.Services.Services
         {
             try
             {
-                if(string.IsNullOrEmpty(request.LoginName)) return new CustomerUpdateResponse { Success = false, ErrorMessage = "Please enter Login name!" };
+                var customerResult = true;
                 if(request.CustomerId==0) return new CustomerUpdateResponse { Success = false, ErrorMessage = "Some issues occurred during updating the customer!" };
+                var customer = new CustomerResponse();
+                try
+                {
+                    //get customer by customerid
+                    customer = _customerService.GetCustomer(request.CustomerId).Result.Customers[0];
+                }
+                catch (Exception)
+                {
+                    customerResult = false;
+                }
+
+                if (!customerResult) return new CustomerUpdateResponse { Success = false, ErrorMessage = "Unable to find the customer!" };
                 //Customer update password request
                 var customerUpdateRequest = new UpdateCustomerRequest { CustomerID = request.CustomerId, LoginPassword = request.NewPassword
-                ,LoginName=request.LoginName };
+                ,LoginName=customer.LoginName };
                 var result = await exigoApiClient.UpdateCustomerAsync(customerUpdateRequest);
                 return new CustomerUpdateResponse { Success = true };
             }
