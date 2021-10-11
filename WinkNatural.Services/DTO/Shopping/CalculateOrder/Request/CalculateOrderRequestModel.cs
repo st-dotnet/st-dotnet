@@ -51,7 +51,8 @@ namespace WinkNatural.Services.DTO.Shopping
         public string Zip { get; set; }
         public string Country { get; set; }
 
-       // public string AddressDisplay { get; }
+        // public string AddressDisplay { get; }
+        public string Error { get; set; }
         public bool IsComplete { get; }
     }
 

@@ -98,11 +98,6 @@ namespace WinkNaturals.Controllers
         }
 
 
-
-
-
-
-
         /// <summary>
         /// CalculateOrder
         /// </summary>

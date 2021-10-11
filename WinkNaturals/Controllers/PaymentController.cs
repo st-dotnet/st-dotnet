@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace WinkNaturals.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
@@ -30,8 +30,6 @@ namespace WinkNaturals.Controllers
             _customerService = customerService;
         }
 
-
-
         [HttpGet("ProcessPayment")]
         public IActionResult ProcessPayment(WinkPaymentRequest winkPaymentRequest)
         {
@@ -39,7 +37,7 @@ namespace WinkNaturals.Controllers
         }
 
         //This below is for make payment using Authorize.net payment gateway
-        [HttpPost("create-customer-profile")]
+        [HttpPost("createCustomerProfile")]
         public async Task<IActionResult> CreateCustomerProfile(AddCardModel model)
         {
             var finalResponse = new AddCardResponse();
