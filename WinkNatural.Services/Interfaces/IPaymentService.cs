@@ -16,10 +16,9 @@ namespace WinkNatural.Services.Interfaces
         BankCardTransaction ProcessPayment(WinkPaymentRequest winkPaymentRequest);
 
         Task<AddCardResponse> CreateCustomerProfile(GetPaymentRequest model);
-
         ProcessPaymentMethodTransactionResponse ProcessPaymentMethod(GetPaymentRequest getPaymentProPayModel);
 
-        Task<AddCardResponse> AddPayment(AddPaymentModel model);
+        Task<AddCardResponse> CreatePaymentUsingAuthorizeNet(AddPaymentModel addPaymentModel);
 
     }
 }

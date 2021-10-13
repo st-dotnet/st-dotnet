@@ -13,6 +13,10 @@ using System.Net.Http;
 using static WinkNatural.Services.DTO.AuthPaymentModel;
 using AutoMapper;
 
+using AuthorizeNet.Api.Controllers;
+using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers.Bases;
+
 namespace WinkNatural.Services.Services
 {
     public class PaymentService : IPaymentService
@@ -104,7 +108,6 @@ namespace WinkNatural.Services.Services
             return credentials;
         }
 
-
         private T Execute<T>(IRestRequest request, string baseUrl) where T : class, new()
         {
             var client = new RestClient(baseUrl);
@@ -122,11 +125,6 @@ namespace WinkNatural.Services.Services
 
             return response.Data;
         }
-
-
-        /// <summary>
-        /// Request information for a call to the "ProcessPaymentMethodTransaction" method.
-        /// </summary>
         public class ProcessPaymentMethodTransactionRequest
         {
             public int ExpMonth { get; set; }
@@ -134,7 +132,6 @@ namespace WinkNatural.Services.Services
             public int CVV { get; set; }
             public string ZipCode { get; set; }
             public string FullName { get; set; }
-
             public string Address1 { get; set; }
             public string City { get; set; }
             public string State { get; set; }
@@ -144,25 +141,6 @@ namespace WinkNatural.Services.Services
             /// </summary>
             public string PaymentMethodId { get; set; }
 
-            /// <summary>
-            /// Gets or sets a value indicating whether the transaction is a recurring payment.
-            /// </summary>
-            public bool IsRecurringPayment { get; set; }
-
-            /// <summary>
-            /// Gets or sets the credit card Override values.
-            /// </summary>
-            public CreditCardOverrides CreditCardOverrides { get; set; }
-
-            /// <summary>
-            /// Gets or sets the ACH override values.
-            /// </summary>
-            public AchOverrides AchOverrides { get; set; }
-
-            /// <summary>
-            /// Gets or sets the payer override values.
-            /// </summary>
-            public PayerOverrides PayerOverrides { get; set; }
             /// <summary>
             /// Gets or sets the ID of the merchant profile to use for this transaction.
             /// </summary>
@@ -191,374 +169,19 @@ namespace WinkNatural.Services.Services
             /// </example>
             public decimal Amount { get; set; }
 
-            /// <summary>
-            /// REQUIRED: Gets or sets the currency code for the transaction.
-            /// </summary>
-            /// <remarks>
-            /// ISO 3166-1 3 digit country codes
-            /// </remarks>
-            /// <example>
-            /// <para>840 - United States of America</para>
-            /// <para>124 - Canada</para>
-            /// </example>
             public string CurrencyCode { get; set; }
 
-            /// <summary>
-            /// Gets or sets the Invoice number for the transaction.
-            /// </summary>
-            /// <remarks>
-            /// <para>Optional </para>
-            /// <para>Length : 50</para>
-            /// </remarks>
-            public string Invoice { get; set; }
-
-            /// <summary>
-            /// Get or sets the comment 1.
-            /// </summary>
-            /// <remarks>
-            /// <para>Optional </para>
-            /// <para>Length : 128</para>
-            /// </remarks>
-            public string Comment1 { get; set; }
-
-            /// <summary>
-            /// Gets or sets the comment 2.
-            /// </summary>
-            /// <remarks>
-            /// <para>Optional </para>
-            /// <para>Length : 128</para>
-            /// </remarks>
-            public string Comment2 { get; set; }
-
-            /// <summary>
-            /// Gets or sets the debt repayment indicator from the request.
-            /// </summary>
-            public bool IsDebtRepayment { get; set; }
         }
-
-        /// <summary>
-        /// Credit Card Overrides.
-        /// </summary>
-        public class CreditCardOverrides
-        {
-            /// <summary>
-            /// The Billing Address of the credit card.
-            /// </summary>
-            public Billing Billing
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The expiration date of the credit card.
-            /// </summary>
-            public string ExpirationDate
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The full name of the card holder.
-            /// </summary>
-            public string FullName
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The CVV for the card.
-            /// </summary>
-            public string CVV
-            {
-                get; set;
-            }
-        }
-
-        /// <summary>
-        /// Payers billing information.
-        /// </summary>
-        public class Billing
-        {
-            /// <summary>
-            /// Address field 1.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 50</para>
-            /// <para>Required</para>
-            /// </remarks>
-            public string Address1
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// Address field 2.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 50</para>
-            /// <para>Optional</para>
-            /// </remarks>
-            public string Address2
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// Address field 3.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 50</para>
-            /// <para>Optional</para>
-            /// </remarks>
-            public string Address3
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// City.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 25</para>
-            /// <para>Required</para>
-            /// </remarks>
-            public string City
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// State or province.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 2</para>
-            /// <para>Required</para>
-            /// </remarks>
-            /// <example>
-            /// <para>"UT" for Utah</para>
-            /// <para>"AB" for Alberta</para>
-            /// </example>
-            public string State
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// Zip or Postal Code.
-            /// </summary>
-            /// <remarks>
-            /// <para>Length : 10</para>
-            /// <para>Required</para>
-            /// </remarks>
-            /// <example>
-            /// <para>"84058" - Orem, Utah</para>
-            /// <para>"T1X 1E1" - Calgary, Alberta</para>
-            /// </example>
-            public string ZipCode
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The country code.
-            /// </summary>
-            /// <remarks>
-            /// <para>Required</para>
-            /// <para>Note: See supported countries </para>
-            /// </remarks>
-            /// <example>
-            /// <para>840 = United States of America</para>
-            /// <para>124 = Canada</para>
-            /// </example>
-            public string Country
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The telephone number.
-            /// </summary>
-            public string TelephoneNumber
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The Email Address.
-            /// </summary>
-            public string Email
-            {
-                get; set;
-            }
-        }
-
-        /// <summary>
-        /// Overrides for ACH transactions.
-        /// </summary>
-        public class AchOverrides
-        {
-            /// <summary>
-            /// The bank account type for the transaction (leave blank to use the type on file).
-            /// </summary>
-            public string BankAccountType
-            {
-                get; set;
-            }
-
-            /// <summary>
-            /// The Standard Entry Class Code for the transaction.
-            /// </summary>
-            public string SecCode
-            {
-                get; set;
-            }
-        }
-
-        /// <summary>
-        /// Information about overrides pertaining to the payer.
-        /// </summary>
-        public class PayerOverrides
-        {
-            /// <summary>
-            /// The IP Address of the user performing the transaction.
-            /// </summary>
-            public string IpAddress
-            {
-                get; set;
-            }
-        }
-
-        /// <summary>
-        /// The value returned from a call to the "ProcessPaymentMethodTransaction" method.
-        /// </summary>
-
-        /// <summary>
-        /// <c>TransactionInformation</c> object for each transaction that was processed.
-        /// </summary>
-        public TransactionInformation Transaction
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// <c>Result</c> structure for giving the result of the transaction.
-        /// </summary>
         public Result RequestResult
         {
             get; set;
         }
 
-
-        /// <summary>
-        /// Transaction information from a attempt at processing a payment method in the ProPay system.
-        /// </summary>
-        public class TransactionInformation
-        {
-            /// <summary>
-            /// Gets or sets transaction history id in the ProPay system.
-            /// </summary>
-            public string TransactionHistoryId { get; set; }
-
-            /// <summary>
-            /// Gets or sets authorization code from the system of record.
-            /// </summary>
-            public string AuthorizationCode { get; set; }
-
-            /// <summary>
-            /// Gets or sets address verification system (AVS) code.
-            /// </summary>
-            /// <remarks>
-            /// Only present if billing information is present on a payment method and
-            /// system of record supports AVS.
-            /// </remarks>
-            public string AVSCode { get; set; }
-
-            /// <summary>
-            /// Gets or sets the amount in the settled currency.
-            /// </summary>
-            public int CurrencyConvertedAmount { get; set; }
-
-            /// <summary>
-            /// Gets or sets the settled currency code.
-            /// </summary>
-            public string CurrencyConvertedCurrencyCode { get; set; }
-
-            /// <summary>
-            /// Gets or sets the conversion rate from the requested currency to the settled currency.
-            /// </summary>
-            public decimal CurrencyConversionRate { get; set; }
-
-            /// <summary>
-            /// Gets or sets gross amount in the settled currency.
-            /// </summary>
-            public virtual int? GrossAmt { get; set; }
-
-            /// <summary>
-            /// Gets or sets gross amount less net amount in the settled currency.
-            /// </summary>
-            public virtual int? GrossAmtLessNetAmt { get; set; }
-
-            /// <summary>
-            /// Gets or sets net amount in the settled currency.
-            /// </summary>
-            public virtual int? NetAmt { get; set; }
-
-            /// <summary>
-            /// Gets or sets per transaction fee in the settled currency.
-            /// </summary>
-            public virtual int? PerTransFee { get; set; }
-
-            /// <summary>
-            /// Gets or sets rate percentage.
-            /// </summary>
-            public virtual decimal? Rate { get; set; }
-
-            /// <summary>
-            /// Gets or sets specific result information from the transaction.
-            /// </summary>
-            public Result ResultCode { get; set; }
-
-            /// <summary>
-            /// Gets or sets transaction ID from the system of record.
-            /// </summary>
-            public string TransactionId { get; set; }
-
-            /// <summary>
-            /// <c>Gets or sets result</c> of the transaction.
-            /// </summary>
-            public string TransactionResult { get; set; }
-        }
-
-        /// <summary>
-        /// The result of the call.
-        /// </summary>
         public class Result
         {
-            /// <summary>
-            /// The result of the transaction
-            /// </summary>
-            /// <remarks>
-            /// Will always be SUCCESS or FAILURE
-            /// </remarks>
             public string ResultValue { get; set; }
-
-            /// <summary>
-            /// The result code of the transaction
-            /// </summary>
-            /// <remarks>
-            /// Will be a two-digit string with only numbers. Allows "00" as a response.
-            /// </remarks>
             public string ResultCode { get; set; }
-
-            /// <summary>
-            /// The english-text message of what went wrong (if anything)
-            /// </summary>
-            /// <remarks>
-            /// The documenation show the empty string being returned in the success cases.
-            /// </remarks>
             public string ResultMessage { get; set; }
-
-
         }
 
         public async Task<AddCardResponse> CreateCustomerProfile(GetPaymentRequest model)
@@ -590,7 +213,7 @@ namespace WinkNatural.Services.Services
                                 {
                                     cardNumber = model.CardNumber,
                                     expirationDate = $"20{model.ExpYear}-{model.ExpMonth}"
-                                    
+
                                 }
                             }
                         }
@@ -618,76 +241,115 @@ namespace WinkNatural.Services.Services
             return finalResponse;
         }
 
-        public async Task<AddCardResponse> AddPayment(AddPaymentModel model)
+        public async Task<AddCardResponse> CreatePaymentUsingAuthorizeNet(AddPaymentModel addPaymentModel)
         {
             var finalResponse = new AddCardResponse();
-            if (model.CreditCardId > 0)
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+
+            // define the merchant information (authentication / transaction id)
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
             {
-                var jsonData = JsonConvert.SerializeObject(new PaymentRequest
-                {
-                    createTransactionRequest = new CreateTransactionRequest
-                    {
-                        merchantAuthentication = new AuthPaymentModel.MerchantAuthentication
-                        {
-                            name = _config.GetSection("AppSettings:APIKey").Value,
-                            transactionKey = _config.GetSection("AppSettings:TransactionKey").Value,
-                        },
-                        refId = "123456",
-                        transactionRequest = new TransactionRequest
-                        {
-                            amount = model.PaymentAmount.ToString(),
-                            lineItems = new LineItems
-                            {
-                                lineItem = new LineItem
-                                {
-                                    itemId = model.OrderId.ToString(),
-                                    description = model.Description,
-                                    name = "Test",
-                                    quantity = model.quantity,   //"1",
-                                    unitPrice = model.PaymentAmount.ToString()
-                                }
-                            },
-                            transactionType = "authCaptureTransaction"
-                        }
-                    }
+                name = _config.GetSection("AppSettings:APIKey").Value,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = _config.GetSection("AppSettings:TransactionKey").Value,
+            };
 
-                });
+            var creditCard = new creditCardType
+            {
+                cardNumber = addPaymentModel.CardNumber,
+                expirationDate = addPaymentModel.ExpMonth + "" + addPaymentModel.ExpYear,  //"1028",
+                cardCode = addPaymentModel.CVV
+            };
 
-                var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                try
+            var billingAddress = new customerAddressType
+            {
+                firstName = addPaymentModel.Name,
+                address = addPaymentModel.Address,
+                city = addPaymentModel.city,
+                zip = addPaymentModel.Zip
+            };
+
+            //standard api call to retrieve response
+            var paymentType = new paymentType { Item = creditCard };
+
+            var transactionRequest = new transactionRequestType
+            {
+                transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),    // charge the card
+                amount = addPaymentModel.Amount,
+                payment = paymentType,
+                billTo = billingAddress
+            };
+
+            var request = new createTransactionRequest { transactionRequest = transactionRequest };
+
+            // instantiate the controller that will call the service
+            var controller = new createTransactionController(request);
+            controller.Execute();
+
+            // get the response from the service (errors contained if any)
+            var response = controller.GetApiResponse();
+
+            // validate response
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
                 {
-                    HttpClient client = new HttpClient();
-                    client.BaseAddress = new Uri($"{_config.GetSection("AppSettings:AuthorizeNetTestBaseUrl").Value}createCustomerProfile");
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                    var response = await client.PostAsync("", stringContent).Result.Content.ReadAsStringAsync();
-                    var finalResult = JsonConvert.DeserializeObject<AddPaymentResponse>(response);
-                    finalResponse.Message = finalResult.messages.message.FirstOrDefault().text.ToString();
-                    finalResponse.ResultCode = finalResult.messages.resultCode;
-                    if (!string.IsNullOrEmpty(finalResult.transactionResponse.transId) && finalResult.messages.resultCode == "Ok")
+                    if (response.transactionResponse.messages != null)
                     {
-                        model.Approved = true;
-                        model.Result = $"{finalResult.transactionResponse.messages.FirstOrDefault().description}. The transaction Id is: {finalResult.transactionResponse.transId}";
+                        Console.WriteLine("Successfully created transaction with Transaction ID: " + response.transactionResponse.transId);
+                        Console.WriteLine("Response Code: " + response.transactionResponse.responseCode);
+                        Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
+                        Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
+                        Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
+
+                        finalResponse.Message = response.transactionResponse.messages[0].description;
+                        finalResponse.TransId = response.transactionResponse.transId;
+                        finalResponse.AuthCode = response.transactionResponse.authCode;
                     }
                     else
                     {
-                        model.Approved = false;
-                        model.Result = $"{finalResult.messages.message.FirstOrDefault().text}. This transaction is failed";
-                    }
-                    
-                }
-                catch (Exception ex)
-                {
+                        Console.WriteLine("Failed Transaction.");
+                        if (response.transactionResponse.errors != null)
+                        {
+                            Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                            Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
 
+                            finalResponse.Message = response.transactionResponse.errors[0].errorText;
+                            finalResponse.TransId = response.transactionResponse.errors[0].errorCode;
+                            finalResponse.AuthCode = "";
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed Transaction.");
+                    if (response.transactionResponse != null && response.transactionResponse.errors != null)
+                    {
+                        Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                        Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+
+                        finalResponse.Message = response.transactionResponse.errors[0].errorText;
+                        finalResponse.TransId = response.transactionResponse.errors[0].errorCode;
+                        finalResponse.AuthCode = "";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error Code: " + response.messages.message[0].code);
+                        Console.WriteLine("Error message: " + response.messages.message[0].text);
+
+                        finalResponse.Message = response.transactionResponse.errors[0].errorText;
+                        finalResponse.TransId = response.transactionResponse.errors[0].errorCode;
+                        finalResponse.AuthCode = "";
+                    }
                 }
             }
             else
             {
-                model.Approved = true;
-                model.Result = $"This transaction is  approved  due to this is manual payment.";
+                Console.WriteLine("Null Response.");
             }
+
             return finalResponse;
         }
-
-
     }
 }

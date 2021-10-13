@@ -53,10 +53,12 @@ namespace WinkNaturals.Controllers
             return Ok(_paymentService.ProcessPaymentMethod(getPaymentProPayModel));
         }
 
-        [HttpPost("add-payment")]
-        public IActionResult AddPayment(AddPaymentModel model)
+        // This below code is for make payment using Authorize Payment gateway.
+
+        [HttpPost("CreatePaymentUsingAuthorizeNet")]
+        public IActionResult CreatePaymentUsingAuthorizeNet(AddPaymentModel addPaymentModel)
         {
-            return Ok(_paymentService.AddPayment(model));
+            return Ok(_paymentService.CreatePaymentUsingAuthorizeNet(addPaymentModel));
         }
 
     }
