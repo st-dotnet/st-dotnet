@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace WinkNaturals.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
