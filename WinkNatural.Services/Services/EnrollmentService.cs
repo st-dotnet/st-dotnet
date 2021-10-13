@@ -40,7 +40,7 @@ namespace WinkNatural.Services.Services
                 request.ItemCodes[0] = "SK-Q1KIT3-21";
                 request.ItemCodes[1] = "SK-Q1KIT2-21";
                 request.ItemCodes[2] = "SK-Q1KIT1-21";
-                using (var context = Common.Utils.DbConnection.Sql())
+                using (var context = DbConnection.Sql())
                 {
                     apiItems = context.Query<EnrollmentResponse>(@"
                 			    SELECT

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace WinkNaturals.Models
+namespace WinkNatural.Services.DTO
 {
+
     public class AuthorizeModel
     {
         public CreateCustomerProfileRequest createCustomerProfileRequest { get; set; }
     }
-
+    
     public class MerchantAuthentication
     {
         public string name { get; set; }
@@ -20,20 +22,18 @@ namespace WinkNaturals.Models
     {
         public string customerType { get; set; }
         public Payment payment { get; set; }
-
     }
 
     public class Payment
     {
         public CreditCard creditCard { get; set; }
-
     }
 
     public class CreditCard
     {
         public string cardNumber { get; set; }
         public string expirationDate { get; set; }
-        public decimal Price { get; set; }
+
     }
 
     public class Profile
@@ -41,6 +41,7 @@ namespace WinkNaturals.Models
         public string description { get; set; }
         public string email { get; set; }
         public PaymentProfiles paymentProfiles { get; set; }
+
     }
 
     public class CreateCustomerProfileRequest
@@ -49,7 +50,6 @@ namespace WinkNaturals.Models
         public Profile profile { get; set; }
         public string validationMode { get; set; }
     }
-
     public class Message
     {
         public string code { get; set; }
@@ -73,3 +73,4 @@ namespace WinkNaturals.Models
 
     }
 }
+

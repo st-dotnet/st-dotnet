@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinkNatural.Services.DTO;
-
+using RestSharp;
 namespace WinkNatural.Services.Services
 {
    public class BankCardTransaction
@@ -37,4 +37,6 @@ namespace WinkNatural.Services.Services
         public string status { get; set; }
         public int paymentId { get; set; }
     }
+
+   
 }

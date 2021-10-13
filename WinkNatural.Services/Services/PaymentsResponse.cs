@@ -32,4 +32,17 @@ namespace WinkNatural.Services.Services
         public string AuthProfileId { get; set; }
         public string AuthCardId { get; set; }
     }
+
+    public class AddPaymentRequest
+    {
+        public decimal PaymentAmount { get; set; }
+        public int CustomerId { get; set; }
+        public int OrderId { get; set; }
+        public int PaymentMethod { get; set; }
+        public int CreditCardId { get; set; }
+        public string Description { get; set; }
+        public int PaymentType { get; set; }
+        public string Result { get; set; }
+        public bool Approved { get; set; }
+    }
 }
