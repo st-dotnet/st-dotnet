@@ -189,7 +189,7 @@ namespace WinkNatural.Services.Services
             /// <para>$ 1.50 = 150</para>
             /// <para>$100.00 = 10000</para>
             /// </example>
-            public float Amount { get; set; }
+            public decimal Amount { get; set; }
 
             /// <summary>
             /// REQUIRED: Gets or sets the currency code for the transaction.

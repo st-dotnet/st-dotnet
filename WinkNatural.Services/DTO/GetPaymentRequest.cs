@@ -21,7 +21,7 @@ namespace WinkNatural.Services.DTO
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         public int CVV { get; set; }
     }
 }
